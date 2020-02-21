@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GameForm">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="18" y="40" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <splitpane id="58b5d" binding="splitPane">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-3410960"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="1d6fe" class="javax.swing.JLabel" binding="questionLabel">
+            <constraints>
+              <splitpane position="right"/>
+            </constraints>
+            <properties>
+              <background color="-3410960"/>
+              <font size="20"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="7199b" class="javax.swing.JLabel" binding="scoreLabel">
+            <constraints>
+              <splitpane position="left"/>
+            </constraints>
+            <properties>
+              <background color="-3410960"/>
+              <enabled value="true"/>
+              <font size="20"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+        </children>
+      </splitpane>
+      <splitpane id="a5896" binding="answers1">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="f8cdc" class="javax.swing.JButton" binding="button2">
+            <constraints>
+              <splitpane position="right"/>
+            </constraints>
+            <properties>
+              <background color="-1644318"/>
+              <font name="Yu Gothic UI Light" size="18"/>
+              <text value="Button"/>
+            </properties>
+          </component>
+          <component id="b6e8b" class="javax.swing.JButton" binding="button1">
+            <constraints>
+              <splitpane position="left"/>
+            </constraints>
+            <properties>
+              <background color="-1644318"/>
+              <font name="Yu Gothic UI Light" size="18"/>
+              <text value="Button"/>
+            </properties>
+          </component>
+        </children>
+      </splitpane>
+      <splitpane id="47b33" binding="answers2">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="dd5f6" class="javax.swing.JButton" binding="button4">
+            <constraints>
+              <splitpane position="right"/>
+            </constraints>
+            <properties>
+              <background color="-1644318"/>
+              <font name="Yu Gothic UI Light" size="18"/>
+              <text value="Button"/>
+            </properties>
+          </component>
+          <component id="78111" class="javax.swing.JButton" binding="button3">
+            <constraints>
+              <splitpane position="left"/>
+            </constraints>
+            <properties>
+              <background color="-1644318"/>
+              <font name="Yu Gothic UI Light" size="18"/>
+              <text value="Button"/>
+            </properties>
+          </component>
+        </children>
+      </splitpane>
+    </children>
+  </grid>
+</form>
