@@ -35,7 +35,15 @@ public class GameForm {
     }
 
     private void placeElements() {
+        setElementsSize();
         Container contentPane = jFrame.getContentPane();
+        contentPane.add(splitPane, BorderLayout.NORTH);
+        contentPane.add(answers1, BorderLayout.CENTER);
+        contentPane.add(answers2, BorderLayout.SOUTH);
+
+    }
+
+    private void setElementsSize() {
         scoreLabel.setPreferredSize(new Dimension(100, 70));
         Dimension buttonDimension = new Dimension(320, 10);
         button1.setPreferredSize(buttonDimension);
@@ -44,9 +52,31 @@ public class GameForm {
         button4.setMinimumSize(buttonDimension);
         answers1.setPreferredSize(new Dimension(jFrame.getWidth(), 80));
         answers2.setPreferredSize(new Dimension(jFrame.getWidth(), 180));
-        contentPane.add(splitPane, BorderLayout.NORTH);
-        contentPane.add(answers1, BorderLayout.CENTER);
-        contentPane.add(answers2, BorderLayout.SOUTH);
     }
 
+    public void setButtonsText(String[] text) {
+        JButton[] jButtons = setJButtonArray();
+        int i = 0;
+        for (String str : text) {
+            jButtons[i].setText(str);
+            i++;
+        }
+    }
+
+    private JButton[] setJButtonArray() {
+        JButton[] jButtons = new JButton[4];
+        jButtons[0] = button1;
+        jButtons[1] = button2;
+        jButtons[2] = button3;
+        jButtons[3] = button4;
+        return jButtons;
+    }
+
+    public void setScoreLabel(String text) {
+        scoreLabel.setText(text);
+    }
+
+    public void setQuestionLabel(String text) {
+        questionLabel.setText(text);
+    }
 }
