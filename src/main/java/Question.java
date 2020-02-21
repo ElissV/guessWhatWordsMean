@@ -6,7 +6,7 @@ public class Question {
     private int otherOptionsQTY = 3;
 
     Question() {
-        
+
     }
 
 }
