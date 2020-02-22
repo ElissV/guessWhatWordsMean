@@ -24,4 +24,8 @@ class WordForQuestion {
     boolean wordOrDescrIsEmpty() {
         return word.isEmpty() || definition.isEmpty();
     }
+
+    public String getWord() {
+        return word;
+    }
 }

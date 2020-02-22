@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21f3db11-8835-468e-864a-bb0fb4fc508f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WordForQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WordForQuestion.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,14 +18,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+            <state relative-caret-position="272">
+              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
               <folding>
-                <element signature="e#390#391#0" expanded="true" />
-                <element signature="e#431#432#0" expanded="true" />
+                <element signature="e#416#417#0" expanded="true" />
+                <element signature="e#457#458#0" expanded="true" />
+                <element signature="e#497#498#0" expanded="true" />
+                <element signature="e#573#574#0" expanded="true" />
+                <element signature="e#616#617#0" expanded="true" />
+                <element signature="e#652#653#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -32,11 +38,29 @@
       <file leaf-file-name="Question.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Question.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="255">
+              <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
               <folding>
                 <element signature="e#439#440#0" expanded="true" />
                 <element signature="e#482#483#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameForm.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2358#2359#0" expanded="true" />
+                <element signature="e#2398#2399#0" expanded="true" />
+                <element signature="e#2447#2448#0" expanded="true" />
+                <element signature="e#2490#2491#0" expanded="true" />
+                <element signature="e#2523#2524#0" expanded="true" />
+                <element signature="e#2552#2553#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/WordForQuestion.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+              <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
               <folding>
                 <element signature="e#150#151#0" expanded="true" />
                 <element signature="e#206#207#0" expanded="true" />
@@ -68,6 +92,7 @@
                 <element signature="e#258#259#0" expanded="true" />
                 <element signature="e#508#509#0" expanded="true" />
                 <element signature="e#545#546#0" expanded="true" />
+                <element signature="e#627#628#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,13 +123,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/GameForm.form" />
         <option value="$PROJECT_DIR$/src/main/java/ErrorMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/WordForQuestion.java" />
         <option value="$PROJECT_DIR$/src/main/java/Question.java" />
         <option value="$PROJECT_DIR$/src/main/java/JsoupReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/Game.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameForm.form" />
+        <option value="$PROJECT_DIR$/src/main/java/WordForQuestion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/MainWindow.java" />
       </list>
     </option>
@@ -258,12 +283,12 @@
       <updated>1582308492130</updated>
       <workItem from="1582308495707" duration="14591000" />
       <workItem from="1582370477199" duration="7762000" />
-      <workItem from="1582385561052" duration="15913000" />
+      <workItem from="1582385561052" duration="16645000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38266000" />
+    <option name="totallyTimeSpent" value="38998000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -285,6 +310,7 @@
       <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20604026" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -296,7 +322,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,8 +336,12 @@
         <state relative-caret-position="136">
           <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
           <folding>
-            <element signature="e#390#391#0" expanded="true" />
-            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#497#498#0" expanded="true" />
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#652#653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -429,30 +458,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameForm.form">
-      <provider selected="true" editor-type-id="ui-designer" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ErrorMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/WordForQuestion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#150#151#0" expanded="true" />
-            <element signature="e#206#207#0" expanded="true" />
-            <element signature="e#130#131#0" expanded="true" />
-            <element signature="e#162#163#0" expanded="true" />
-            <element signature="e#214#215#0" expanded="true" />
-            <element signature="e#258#259#0" expanded="true" />
-            <element signature="e#508#509#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -466,10 +482,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameForm.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/WordForQuestion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding>
+            <element signature="e#150#151#0" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#130#131#0" expanded="true" />
+            <element signature="e#162#163#0" expanded="true" />
+            <element signature="e#214#215#0" expanded="true" />
+            <element signature="e#258#259#0" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+            <element signature="e#627#628#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Question.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="255">
+          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
           <folding>
             <element signature="e#439#440#0" expanded="true" />
             <element signature="e#482#483#0" expanded="true" />
@@ -477,10 +514,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+          <folding>
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#497#498#0" expanded="true" />
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#652#653#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1198">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        <state relative-caret-position="357">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2358#2359#0" expanded="true" />
@@ -489,24 +541,6 @@
             <element signature="e#2490#2491#0" expanded="true" />
             <element signature="e#2523#2524#0" expanded="true" />
             <element signature="e#2552#2553#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding>
-            <element signature="e#390#391#0" expanded="true" />
-            <element signature="e#431#432#0" expanded="true" />
           </folding>
         </state>
       </provider>

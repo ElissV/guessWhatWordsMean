@@ -23,7 +23,7 @@
               <font size="20"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
-              <text value="Label"/>
+              <text value="Word"/>
             </properties>
           </component>
           <component id="7199b" class="javax.swing.JLabel" binding="scoreLabel">
@@ -36,7 +36,7 @@
               <font size="20"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
-              <text value="Label"/>
+              <text value="0/10"/>
             </properties>
           </component>
         </children>
@@ -53,7 +53,7 @@
             <properties>
               <background color="-1644318"/>
               <font name="Yu Gothic UI Light" size="18"/>
-              <text value="Button"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="b6e8b" class="javax.swing.JButton" binding="button1">
@@ -63,7 +63,7 @@
             <properties>
               <background color="-1644318"/>
               <font name="Yu Gothic UI Light" size="18"/>
-              <text value="Button"/>
+              <text value=""/>
             </properties>
           </component>
         </children>
@@ -80,7 +80,7 @@
             <properties>
               <background color="-1644318"/>
               <font name="Yu Gothic UI Light" size="18"/>
-              <text value="Button"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="78111" class="javax.swing.JButton" binding="button3">
@@ -90,7 +90,7 @@
             <properties>
               <background color="-1644318"/>
               <font name="Yu Gothic UI Light" size="18"/>
-              <text value="Button"/>
+              <text value=""/>
             </properties>
           </component>
         </children>
