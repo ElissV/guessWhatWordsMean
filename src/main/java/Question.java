@@ -10,6 +10,14 @@ class Question {
         otherOptionsForAnswer = JsoupReader.getOtherOptionsForAnswer();
     }
 
+    String[] getOtherOptionsForAnswer() {
+        return otherOptionsForAnswer;
+    }
+
+    WordForQuestion getWord() {
+        return word;
+    }
+
     static int getOtherAnswerOptions() {
         return OTHER_ANSWER_OPTIONS;
     }

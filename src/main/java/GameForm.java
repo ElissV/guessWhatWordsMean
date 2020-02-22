@@ -54,7 +54,12 @@ public class GameForm {
         answers2.setPreferredSize(new Dimension(jFrame.getWidth(), 180));
     }
 
-    public void setWordAndScore(WordForQuestion word) {
+    void showQuestion(Question question) {
+        setWordAndScore(question.getWord());
+        setButtonsText(question.getOtherOptionsForAnswer());
+    }
+
+    private void setWordAndScore(WordForQuestion word) {
         setScoreLabel();
         questionLabel.setText(word.getWord());
     }
@@ -65,7 +70,7 @@ public class GameForm {
         scoreLabel.setText(initialScore + "/" + totalQuestions);
     }
 
-    public void setButtonsText(String[] text) {
+    private void setButtonsText(String[] text) {
         JButton[] jButtons = getJButtonArray();
         int i = 0;
         for (String str : text) {
@@ -83,15 +88,7 @@ public class GameForm {
         return jButtons;
     }
 
-    public void setScoreLabel(String text) {
-        scoreLabel.setText(text);
-    }
-
-    public void setQuestionLabel(String text) {
-        questionLabel.setText(text);
-    }
-
-    public JFrame getjFrame() {
+    JFrame getjFrame() {
         return jFrame;
     }
 }

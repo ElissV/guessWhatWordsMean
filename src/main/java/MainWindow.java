@@ -11,6 +11,8 @@ public class MainWindow {
     public static void main(String[] args) {
         gameForm = new GameForm();
         askQuestion();
+        gameForm.showQuestion(question);
+        System.out.println("DONE");
     }
 
     private static void askQuestion() {
@@ -21,7 +23,7 @@ public class MainWindow {
         return gameForm.getjFrame();
     }
 
-    public static int getQuestionsQty() {
+    static int getQuestionsQty() {
         return QUESTIONS_QTY;
     }
 }
