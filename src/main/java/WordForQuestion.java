@@ -22,10 +22,17 @@ class WordForQuestion {
     }
 
     boolean wordOrDescrIsEmpty() {
-        return word.isEmpty() || definition.isEmpty();
+        if (word != null || definition != null)
+            return word.isEmpty() || definition.isEmpty();
+        else
+            return true;
     }
 
     String getWord() {
         return word;
+    }
+
+    String getDefinition() {
+        return definition;
     }
 }

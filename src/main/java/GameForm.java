@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class GameForm {
 
@@ -40,13 +41,13 @@ public class GameForm {
         contentPane.add(splitPane, BorderLayout.NORTH);
         contentPane.add(answers1, BorderLayout.CENTER);
         contentPane.add(answers2, BorderLayout.SOUTH);
-
     }
 
     private void setElementsSize() {
         scoreLabel.setPreferredSize(new Dimension(100, 70));
         Dimension buttonDimension = new Dimension(320, 10);
         button1.setPreferredSize(buttonDimension);
+        button1.setMargin(new Insets(0, 0, 0, 0));
         button2.setPreferredSize(buttonDimension);
         button3.setMinimumSize(buttonDimension);
         button4.setMinimumSize(buttonDimension);
@@ -56,7 +57,7 @@ public class GameForm {
 
     void showQuestion(Question question) {
         setWordAndScore(question.getWord());
-        setButtonsText(question.getOtherOptionsForAnswer());
+        setButtonsText(question.getOptionsForAnswer());
     }
 
     private void setWordAndScore(WordForQuestion word) {
@@ -70,7 +71,7 @@ public class GameForm {
         scoreLabel.setText(initialScore + "/" + totalQuestions);
     }
 
-    private void setButtonsText(String[] text) {
+    private void setButtonsText(List<String> text) {
         JButton[] jButtons = getJButtonArray();
         int i = 0;
         for (String str : text) {

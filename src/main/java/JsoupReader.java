@@ -1,3 +1,4 @@
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -5,6 +6,8 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 class JsoupReader {
 
@@ -31,19 +34,23 @@ class JsoupReader {
 
     private static String getWord() {
         Document doc = readPage(URLS[0]);
-        String word = "";
         if (doc != null) {
             Elements elements = doc.getElementsByClass(ELEMENT_WITH_WORD[0]);
             Element element = elements.select(ELEMENT_WITH_WORD[1]).first();
-            word = element.ownText();
+            String word = element.ownText();
+            return firstCharToUpperCase(word);
         }
-        return firstCharToUpperCase(word);
+        return null;
     }
 
     private static Document readPage(String url) {
         try {
-            return Jsoup.parse(new URL(url), 7000);
-        } catch (IOException e) {
+            Connection con = Jsoup.connect(url).timeout(2000);
+            Connection.Response resp = con.execute();
+            if (resp.statusCode() == 200) {
+                return con.get();
+            }
+        } catch(IOException e){
             ErrorMessage.showErrorMessage(e);
         }
         return null;
@@ -67,12 +74,12 @@ class JsoupReader {
         return result;
     }
 
-    static String[] getOtherOptionsForAnswer() {
-        int optionsNeeded = Question.getOtherAnswerOptions();
-        String[] options = new String[optionsNeeded];
+    static List<String> getOtherOptionsForAnswer() {
+        int optionsNeeded = Question.getAnswerOptions();
+        List<String> options = new ArrayList<String>();
         for (int i=0; i<optionsNeeded; i++) {
             String word = getWord();
-            options[i] = getDefinition(word);
+            options.add(getDefinition(word));
         }
         return options;
     }

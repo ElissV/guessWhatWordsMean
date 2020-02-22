@@ -1,24 +1,32 @@
+import java.util.List;
+
 class Question {
 
     private WordForQuestion word;
     private static final int OTHER_ANSWER_OPTIONS = 3;
-    private String[] otherOptionsForAnswer;
+    private List<String> optionsForAnswer;
 
 
     Question() {
         word = JsoupReader.getWordObject();
-        otherOptionsForAnswer = JsoupReader.getOtherOptionsForAnswer();
+        optionsForAnswer = JsoupReader.getOtherOptionsForAnswer();
+        optionsForAnswer.add(word.getDefinition());
+
+        for (String g : optionsForAnswer) {
+            System.out.println(g);
+        }
     }
 
-    String[] getOtherOptionsForAnswer() {
-        return otherOptionsForAnswer;
+    List<String> getOptionsForAnswer() {
+        return optionsForAnswer;
     }
 
     WordForQuestion getWord() {
         return word;
     }
 
-    static int getOtherAnswerOptions() {
+    static int getAnswerOptions() {
         return OTHER_ANSWER_OPTIONS;
     }
+
 }
