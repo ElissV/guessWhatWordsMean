@@ -1,4 +1,4 @@
-public class Question {
+class Question {
 
     private static final int OTHER_ANSWER_OPTIONS = 3;
     private String chosenWord;
@@ -7,9 +7,13 @@ public class Question {
 
 
     Question() {
-        String[] wordAndDefinition =
-                JsoupReader.getWordAndDefinition();
-        System.out.println("|" + wordAndDefinition[0] + "| A |" + wordAndDefinition[1] + "|");
+        String[] wordAndDefinition = JsoupReader.getWordAndDefinition();
+        chosenWord = wordAndDefinition[0];
+        chosenWordDefeinition = wordAndDefinition[1];
+        otherOptionsForAnswer = JsoupReader.getOtherOptionsForAnswer();
     }
 
+    static int getOtherAnswerOptions() {
+        return OTHER_ANSWER_OPTIONS;
+    }
 }

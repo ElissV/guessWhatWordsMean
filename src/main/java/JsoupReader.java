@@ -72,4 +72,14 @@ class JsoupReader {
         return result;
     }
 
+    static String[] getOtherOptionsForAnswer() {
+        int optionsNeeded = Question.getOtherAnswerOptions();
+        String[] options = new String[optionsNeeded];
+        for (int i=0; i<optionsNeeded; i++) {
+            String word = getWord();
+            options[i] = getDefinition(word);
+        }
+        return options;
+    }
+
 }

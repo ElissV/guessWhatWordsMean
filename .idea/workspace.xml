@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21f3db11-8835-468e-864a-bb0fb4fc508f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ErrorMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JsoupReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JsoupReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Question.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -61,20 +55,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Question.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Question.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Question.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="91" selection-start-line="11" selection-start-column="91" selection-end-line="11" selection-end-column="91" />
+            <state relative-caret-position="221">
+              <caret line="13" column="48" lean-forward="true" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+              <folding>
+                <element signature="e#439#440#0" expanded="true" />
+                <element signature="e#482#483#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JsoupReader.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JsoupReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/JsoupReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1258">
-              <caret line="74" column="1" lean-forward="true" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
+            <state relative-caret-position="518">
+              <caret line="80" column="9" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,9 +109,9 @@
         <option value="$PROJECT_DIR$/src/main/java/GameForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/Game.java" />
         <option value="$PROJECT_DIR$/src/main/java/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Question.java" />
         <option value="$PROJECT_DIR$/src/main/java/ErrorMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/JsoupReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Question.java" />
       </list>
     </option>
   </component>
@@ -258,12 +256,12 @@
       <updated>1582308492130</updated>
       <workItem from="1582308495707" duration="14591000" />
       <workItem from="1582370477199" duration="7762000" />
-      <workItem from="1582385561052" duration="13200000" />
+      <workItem from="1582385561052" duration="13679000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35553000" />
+    <option name="totallyTimeSpent" value="36032000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -343,6 +341,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="e#439#440#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -463,13 +465,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Question.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="91" selection-start-line="11" selection-start-column="91" selection-end-line="11" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ErrorMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -479,10 +474,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/JsoupReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="74" column="1" lean-forward="true" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
+        <state relative-caret-position="518">
+          <caret line="80" column="9" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="48" lean-forward="true" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+          <folding>
+            <element signature="e#439#440#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
           </folding>
         </state>
       </provider>
