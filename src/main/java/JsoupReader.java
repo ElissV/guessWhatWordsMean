@@ -19,19 +19,14 @@ class JsoupReader {
         ELEMENT_WITH_DEFINITION = new String[]{"dtText", "span"};
     }
 
-    static String[] getWordAndDefinition() {
-        String[] valuesArray = new String[2];
-        valuesArray[0] = getWord();
-        valuesArray[1] = getDefinition(valuesArray[0]);
-        while (someValueIsEmpty(valuesArray)) {
-            valuesArray = getWordAndDefinition();
+    static WordForQuestion getWordObject() {
+        String word = getWord();
+        String definition = getDefinition(word);
+        WordForQuestion wordObj = new WordForQuestion(word, definition);
+        while (wordObj.wordOrDescrIsEmpty()) {
+            wordObj = getWordObject();
         }
-        return valuesArray;
-    }
-
-    private static boolean someValueIsEmpty(String[] wordAndDefinition) {
-        return wordAndDefinition[0].isEmpty() ||
-                wordAndDefinition[1].isEmpty();
+        return wordObj;
     }
 
     private static String getWord() {

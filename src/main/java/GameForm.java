@@ -55,7 +55,7 @@ public class GameForm {
     }
 
     public void setButtonsText(String[] text) {
-        JButton[] jButtons = setJButtonArray();
+        JButton[] jButtons = getJButtonArray();
         int i = 0;
         for (String str : text) {
             jButtons[i].setText(str);
@@ -63,7 +63,7 @@ public class GameForm {
         }
     }
 
-    private JButton[] setJButtonArray() {
+    private JButton[] getJButtonArray() {
         JButton[] jButtons = new JButton[4];
         jButtons[0] = button1;
         jButtons[1] = button2;
