@@ -79,4 +79,8 @@ public class GameForm {
     public void setQuestionLabel(String text) {
         questionLabel.setText(text);
     }
+
+    public JFrame getjFrame() {
+        return jFrame;
+    }
 }
