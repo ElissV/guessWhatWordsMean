@@ -3,14 +3,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import java.util.ArrayList;
 import java.util.List;
 
 class PageReader {
 
-    private static final String URL = "https://www.randomlists.com/random-vocabulary-words";
-    private static String[] wordsAndDefinitions =getPageContent();
+    private static String[] wordsAndDefinitions = getWordsAndDefsArray();
 
 
     static WordForQuestion getWordObject() {
@@ -19,24 +17,42 @@ class PageReader {
         return new WordForQuestion(word, definition);
     }
 
-    private static String[] getPageContent() {
-        System.setProperty("webdriver.chrome.driver","D:\\Software\\Chrome_download\\chromedriver_win32\\chromedriver.exe");
+    private static String[] getWordsAndDefsArray() {
+        WebDriver driver = getDriver();
+        return getValuesArray(driver);
+    }
+
+    private static WebDriver getDriver() {
+        System.setProperty("webdriver.chrome.driver",
+                "D:\\Software\\Chrome_download\\chromedriver_win32\\chromedriver.exe");
+        String url = "https://www.randomlists.com/random-vocabulary-words";
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         WebDriver driver = new ChromeDriver(options);
-        driver.get(URL);
+        driver.get(url);
+        return driver;
+    }
+
+    private static String[] getValuesArray(WebDriver driver) {
+        List<WebElement> elements = getPageContent(driver);
+        int elementsTotal = 10;
+        String[] elementStr = new String[elementsTotal];
+        int i = 0;
+        for (WebElement w : elements) {
+            String str = firstCharToUpperCase(w.getText());
+            elementStr[i] = str;
+            i++;
+        }
+        driver.quit();
+        return elementStr[0].split("\n");
+    }
+
+    private static List<WebElement> getPageContent(WebDriver driver) {
         List<WebElement> elements = null;
         while (elements == null) {
             elements = driver.findElements(By.className("Rand-stage"));
         }
-        List<String> str = new ArrayList<String>();
-
-        for (WebElement w : elements) {
-            str.add(w.getText());
-        }
-        driver.quit();
-
-        return str.get(0).split("\n");
+        return elements;
     }
 
     private static String firstCharToUpperCase(String word) {

@@ -13,6 +13,7 @@ public class MainWindow {
         //askQuestion();
         //gameForm.showQuestion(question);
         WordForQuestion w = PageReader.getWordObject();
+        System.out.println(w.getWord());
     }
 
     private static void askQuestion() {
