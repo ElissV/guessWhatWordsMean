@@ -8,12 +8,11 @@ class Question {
 
 
     Question() {
-        word = JsoupReader.getWordObject();
-        optionsForAnswer = JsoupReader.getOtherOptionsForAnswer();
+        word = PageReader.getWordObject();
+        optionsForAnswer = PageReader.getOtherOptionsForAnswer();
         optionsForAnswer.add(word.getDefinition());
-
-        for (String g : optionsForAnswer) {
-            System.out.println(g);
+        for (String s : optionsForAnswer) {
+            System.out.println(s);
         }
     }
 

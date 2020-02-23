@@ -21,11 +21,16 @@ class WordForQuestion {
         this.definition = definition;
     }
 
-    boolean wordOrDescrIsEmpty() {
+    boolean wordOrDescriptionNotCorrect() {
         if (word != null || definition != null)
-            return word.isEmpty() || definition.isEmpty();
-        else
-            return true;
+            if (!(word.isEmpty()) || !(definition.isEmpty()))
+                return definitionNotShort();
+        return true;
+    }
+
+    private boolean definitionNotShort() {
+        int minDefinitionLen = 8;
+        return definition.length() >= minDefinitionLen;
     }
 
     String getWord() {
@@ -35,4 +40,5 @@ class WordForQuestion {
     String getDefinition() {
         return definition;
     }
+
 }

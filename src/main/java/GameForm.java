@@ -47,7 +47,6 @@ public class GameForm {
         scoreLabel.setPreferredSize(new Dimension(100, 70));
         Dimension buttonDimension = new Dimension(320, 10);
         button1.setPreferredSize(buttonDimension);
-        button1.setMargin(new Insets(0, 0, 0, 0));
         button2.setPreferredSize(buttonDimension);
         button3.setMinimumSize(buttonDimension);
         button4.setMinimumSize(buttonDimension);

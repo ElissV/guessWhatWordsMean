@@ -9,10 +9,10 @@ public class MainWindow {
     private static int rightAnswersGiven = 0;
 
     public static void main(String[] args) {
-        gameForm = new GameForm();
-        askQuestion();
-        gameForm.showQuestion(question);
-        System.out.println("DONE");
+        //gameForm = new GameForm();
+        //askQuestion();
+        //gameForm.showQuestion(question);
+        WordForQuestion w = PageReader.getWordObject();
     }
 
     private static void askQuestion() {
