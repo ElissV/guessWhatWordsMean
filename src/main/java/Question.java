@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.List;
 
 class Question {
@@ -9,11 +10,14 @@ class Question {
 
     Question() {
         word = PageReader.getWordObject();
-        optionsForAnswer = PageReader.getOtherOptionsForAnswer();
+        optionsForAnswer = getOptions();
+    }
+
+    private List<String> getOptions() {
+        List<String> options = PageReader.getOtherOptionsForAnswer();
         optionsForAnswer.add(word.getDefinition());
-        for (String s : optionsForAnswer) {
-            System.out.println(s);
-        }
+        Collections.shuffle(optionsForAnswer);
+        return options;
     }
 
     List<String> getOptionsForAnswer() {

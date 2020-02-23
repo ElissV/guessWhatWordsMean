@@ -3,7 +3,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class PageReader {
@@ -62,13 +64,29 @@ class PageReader {
     }
 
     static List<String> getOtherOptionsForAnswer() {
-        List<String> options = new ArrayList<String>();
-        int optionsNeeded = Question.getAnswerOptions();
-        for (int i=0; i<optionsNeeded; i++) {
-            WordForQuestion word = getWordObject();
-            options.add(word.getDefinition());
+        List<String> array = getArrayWithOtherAnswers();
+        return leaveOnlyDefinitions(array);
+    }
+
+    private static List<String> getArrayWithOtherAnswers() {
+        List<String> list = new ArrayList<>(Arrays.asList(wordsAndDefinitions));
+        int wordForQuestionIndex = 0, definitionIndex = 1;
+        list.remove(wordForQuestionIndex);
+        list.remove(definitionIndex);
+        return list;
+    }
+
+    private static List<String> leaveOnlyDefinitions(List<String> list) {
+        for (int i=0; i<list.size(); i++) {
+            String str = list.get(i);
+            if (isNotDefinition(list, str))
+                list.remove(str);
         }
-        return options;
+        return list;
+    }
+
+    private static boolean isNotDefinition(List<String> list, String s) {
+        return list.indexOf(s)%2 != 0;
     }
 
 }

@@ -66,15 +66,15 @@ public class GameForm {
 
     private void setScoreLabel() {
         int initialScore = 0;
-        int totalQuestions = MainWindow.getQuestionsQty();
+        int totalQuestions = Main.getQuestionsQty();
         scoreLabel.setText(initialScore + "/" + totalQuestions);
     }
 
     private void setButtonsText(List<String> text) {
         JButton[] jButtons = getJButtonArray();
         int i = 0;
-        for (String str : text) {
-            jButtons[i].setText(str);
+        for (JButton button : jButtons) {
+            button.setText(text.get(i));
             i++;
         }
     }
