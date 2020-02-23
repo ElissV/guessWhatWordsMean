@@ -16,6 +16,17 @@ public class MainWindow {
         System.out.println(w.getWord());
     }
 
+    class ErrorMessage {
+
+        void showErrorMessage(Exception e) {
+            String message = e.getClass() + "\n" + e.getMessage();
+            JOptionPane.showMessageDialog(MainWindow.getGameFormFrame(), message);
+            e.printStackTrace();
+        }
+
+    }
+
+
     private static void askQuestion() {
         question = new Question();
     }
