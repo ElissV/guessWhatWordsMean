@@ -15,9 +15,13 @@ class Question {
 
     private List<String> getOptions() {
         List<String> options = PageReader.getOtherOptionsForAnswer();
-        optionsForAnswer.add(word.getDefinition());
-        Collections.shuffle(optionsForAnswer);
+        options.add(word.getDefinition());
+        Collections.shuffle(options);
         return options;
+    }
+
+    boolean isRightAnswer(String answer) {
+        return answer.equals(word.getDefinition());
     }
 
     List<String> getOptionsForAnswer() {

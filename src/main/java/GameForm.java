@@ -71,10 +71,13 @@ public class GameForm {
     }
 
     private void setButtonsText(List<String> text) {
+        Question q = Main.getQuestion();
         JButton[] jButtons = getJButtonArray();
         int i = 0;
         for (JButton button : jButtons) {
             button.setText(text.get(i));
+            if (q.isRightAnswer(text.get(i)))
+                button.setBackground(Color.GREEN);
             i++;
         }
     }
@@ -91,4 +94,5 @@ public class GameForm {
     JFrame getjFrame() {
         return jFrame;
     }
+
 }

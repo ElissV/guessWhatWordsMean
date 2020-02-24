@@ -26,7 +26,7 @@ class PageReader {
 
     private static WebDriver getDriver() {
         System.setProperty("webdriver.chrome.driver",
-                "D:\\Software\\Chrome_download\\chromedriver_win32\\chromedriver.exe");
+                "D:\\Software\\Chrome_download\\chromedriver\\chromedriver.exe");
         String url = "https://www.randomlists.com/random-vocabulary-words";
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
@@ -71,22 +71,19 @@ class PageReader {
     private static List<String> getArrayWithOtherAnswers() {
         List<String> list = new ArrayList<>(Arrays.asList(wordsAndDefinitions));
         int wordForQuestionIndex = 0, definitionIndex = 1;
-        list.remove(wordForQuestionIndex);
         list.remove(definitionIndex);
+        list.remove(wordForQuestionIndex);
         return list;
     }
 
     private static List<String> leaveOnlyDefinitions(List<String> list) {
+        List<String> definitions = new ArrayList<>();
         for (int i=0; i<list.size(); i++) {
-            String str = list.get(i);
-            if (isNotDefinition(list, str))
-                list.remove(str);
+            if (i%2!=0)
+                definitions.add(list.get(i));
         }
-        return list;
-    }
-
-    private static boolean isNotDefinition(List<String> list, String s) {
-        return list.indexOf(s)%2 != 0;
+        definitions.remove(definitions.size()-1);
+        return definitions;
     }
 
 }

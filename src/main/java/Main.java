@@ -27,4 +27,8 @@ public class Main {
     static int getQuestionsQty() {
         return QUESTIONS_QTY;
     }
+
+    public static Question getQuestion() {
+        return question;
+    }
 }
