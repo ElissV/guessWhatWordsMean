@@ -4,6 +4,7 @@ public class Main {
 
     private static GameForm gameForm;
     private static Question question;
+    private static Question nextQuestion;
     private static final int QUESTIONS_QTY = 10;
     private static int questionsAnswered = 0;
     private static int rightAnswersGiven = 0;
@@ -20,6 +21,7 @@ public class Main {
     }
 
     private static void askQuestion() {
+        nextQuestion = new Question();
         question = new Question();
         gameForm.showQuestion(question);
     }
@@ -28,7 +30,7 @@ public class Main {
         return QUESTIONS_QTY;
     }
 
-    public static Question getQuestion() {
+    static Question getQuestion() {
         return question;
     }
 }

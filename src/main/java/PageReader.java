@@ -10,18 +10,24 @@ import java.util.List;
 
 class PageReader {
 
-    private static String[] wordsAndDefinitions = getWordsAndDefsArray();
+    private String[] wordsAndDefinitions;
 
 
-    static WordForQuestion getWordObject() {
+    WordForQuestion getWordObject() {
+        getWordsAndDefsArray();
         String word = wordsAndDefinitions[0];
         String definition = wordsAndDefinitions[1];
         return new WordForQuestion(word, definition);
     }
 
-    private static String[] getWordsAndDefsArray() {
+    private void getWordsAndDefsArray() {
         WebDriver driver = getDriver();
-        return getValuesArray(driver);
+        wordsAndDefinitions = getValuesArray(driver);
+    }
+
+    private void getNextWordsAndDefsArray() {
+        Runnable pageReaderRunnable = new PageReader()::getWordsAndDefsArray;
+        new Thread(pageReaderRunnable).start();
     }
 
     private static WebDriver getDriver() {
@@ -35,7 +41,7 @@ class PageReader {
         return driver;
     }
 
-    private static String[] getValuesArray(WebDriver driver) {
+    private String[] getValuesArray(WebDriver driver) {
         List<WebElement> elements = getPageContent(driver);
         int elementsTotal = 10;
         String[] elementStr = new String[elementsTotal];
@@ -49,7 +55,7 @@ class PageReader {
         return elementStr[0].split("\n");
     }
 
-    private static List<WebElement> getPageContent(WebDriver driver) {
+    private List<WebElement> getPageContent(WebDriver driver) {
         List<WebElement> elements = null;
         while (elements == null) {
             elements = driver.findElements(By.className("Rand-stage"));
@@ -57,18 +63,18 @@ class PageReader {
         return elements;
     }
 
-    private static String firstCharToUpperCase(String word) {
+    private String firstCharToUpperCase(String word) {
         int lastCharIndex = word.length();
         String upperCaseChar = word.substring(0,1).toUpperCase();
         return upperCaseChar + word.substring(1, lastCharIndex);
     }
 
-    static List<String> getOtherOptionsForAnswer() {
+    List<String> getOtherOptionsForAnswer() {
         List<String> array = removeWordAndDefinitionForQuestion();
         return leaveOnlyThreeDefinitions(array);
     }
 
-    private static List<String> removeWordAndDefinitionForQuestion() {
+    private List<String> removeWordAndDefinitionForQuestion() {
         List<String> list = new ArrayList<>(Arrays.asList(wordsAndDefinitions));
         int wordForQuestionIndex = 0, definitionIndex = 1;
         list.remove(definitionIndex);
@@ -88,5 +94,5 @@ class PageReader {
         definitions.remove(forthDefinitionIndex);
         return definitions;
     }
-    
+
 }

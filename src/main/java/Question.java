@@ -20,6 +20,13 @@ class Question {
         return options;
     }
 
+    class NextQuestion extends Question {
+        NextQuestion() {
+            word = PageReader.getWordObject();
+            optionsForAnswer = getOptions();
+        }
+    }
+
     boolean isRightAnswer(String answer) {
         return answer.equals(word.getDefinition());
     }
