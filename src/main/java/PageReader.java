@@ -64,11 +64,11 @@ class PageReader {
     }
 
     static List<String> getOtherOptionsForAnswer() {
-        List<String> array = getArrayWithOtherAnswers();
-        return leaveOnlyDefinitions(array);
+        List<String> array = removeWordAndDefinitionForQuestion();
+        return leaveOnlyThreeDefinitions(array);
     }
 
-    private static List<String> getArrayWithOtherAnswers() {
+    private static List<String> removeWordAndDefinitionForQuestion() {
         List<String> list = new ArrayList<>(Arrays.asList(wordsAndDefinitions));
         int wordForQuestionIndex = 0, definitionIndex = 1;
         list.remove(definitionIndex);
@@ -76,14 +76,17 @@ class PageReader {
         return list;
     }
 
-    private static List<String> leaveOnlyDefinitions(List<String> list) {
+    private static List<String> leaveOnlyThreeDefinitions(List<String> list) {
         List<String> definitions = new ArrayList<>();
-        for (int i=0; i<list.size(); i++) {
-            if (i%2!=0)
-                definitions.add(list.get(i));
+        int index = 0;
+        for (String s : list) {
+            if (index%2 != 0)
+                definitions.add(s);
+            index++;
         }
-        definitions.remove(definitions.size()-1);
+        int forthDefinitionIndex = definitions.size()-1;
+        definitions.remove(forthDefinitionIndex);
         return definitions;
     }
-
+    
 }
