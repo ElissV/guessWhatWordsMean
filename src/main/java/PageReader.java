@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 class PageReader {
 
@@ -34,8 +33,6 @@ class PageReader {
         for (String aStringArray : stringArray) {
             sb.append(aStringArray).append("/");
         }
-        String d = sb.toString();
-        System.out.println(d);
         return sb.toString();
     }
 
@@ -43,13 +40,13 @@ class PageReader {
         System.setProperty("webdriver.chrome.driver",
                 "D:\\Software\\Chrome_download\\chromedriver\\chromedriver.exe");
         String url = "https://www.randomlists.com/random-vocabulary-words";
-        ChromeOptions options = getOptions();
+        ChromeOptions options = getChromeOptions();
         WebDriver driver = new ChromeDriver(options);
         driver.get(url);
         return driver;
     }
 
-    private ChromeOptions getOptions() {
+    private ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         options.setPageLoadStrategy(PageLoadStrategy.EAGER);

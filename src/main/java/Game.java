@@ -1,7 +1,3 @@
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 class Game {
 
@@ -16,20 +12,11 @@ class Game {
     }
 
     void askQuestion() {
-        ExecutorService service = Executors.newFixedThreadPool(1);
-        Future<String> task    = service.submit(new NextQuestionReader());
         question = new Question();
         question.createQuestion();
+        nextQuestion = new NextQuestion();
+        nextQuestion.createQuestion();
         gameForm.showQuestion(question);
-    }
-
-    class NextQuestionReader implements Callable<String> {
-        @Override
-        public String call() {
-            System.out.println("START");
-            PageReader reader = new PageReader();
-            return reader.getArray();
-        }
     }
 
     Question getQuestion() {
