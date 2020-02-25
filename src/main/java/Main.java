@@ -21,7 +21,6 @@ public class Main {
     }
 
     private static void askQuestion() {
-        nextQuestion = new Question();
         question = new Question();
         gameForm.showQuestion(question);
     }

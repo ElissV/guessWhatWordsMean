@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 class PageReader {
 
@@ -14,20 +15,34 @@ class PageReader {
 
 
     WordForQuestion getWordObject() {
-        getWordsAndDefsArray();
+        wordsAndDefinitions = getWordsAndDefsArray();
         String word = wordsAndDefinitions[0];
         String definition = wordsAndDefinitions[1];
         return new WordForQuestion(word, definition);
     }
 
-    private void getWordsAndDefsArray() {
+    private String[] getWordsAndDefsArray() {
         WebDriver driver = getDriver();
-        wordsAndDefinitions = getValuesArray(driver);
+        return getValuesArray(driver);
     }
 
-    private void getNextWordsAndDefsArray() {
-        Runnable pageReaderRunnable = new PageReader()::getWordsAndDefsArray;
-        new Thread(pageReaderRunnable).start();
+    private void getNextQuestionWordsAndDefsArray() {
+        getWordsAndDefsArray();
+    }
+
+    WordForQuestion getNextWordObject() {
+        PageReaderNextQuestion pageReader = new PageReaderNextQuestion();
+        WordForQuestion w = (WordForQuestion) pageReader.call();
+        System.out.println(w.getWord());
+        System.out.println(w.getDefinition());
+        return w;
+    }
+
+    class PageReaderNextQuestion implements Callable {
+        @Override
+        public Object call() {
+            return getWordObject();
+        }
     }
 
     private static WebDriver getDriver() {

@@ -3,27 +3,34 @@ import java.util.List;
 
 class Question {
 
+    private PageReader pageReader;
     private WordForQuestion word;
     private static final int OTHER_ANSWER_OPTIONS = 3;
     private List<String> optionsForAnswer;
 
 
     Question() {
-        word = PageReader.getWordObject();
+        pageReader = new PageReader();
+        word = pageReader.getWordObject();
         optionsForAnswer = getOptions();
     }
 
     private List<String> getOptions() {
-        List<String> options = PageReader.getOtherOptionsForAnswer();
+        List<String> options = pageReader.getOtherOptionsForAnswer();
         options.add(word.getDefinition());
         Collections.shuffle(options);
         return options;
     }
 
     class NextQuestion extends Question {
+
+        private PageReader pageReader;
+        private WordForQuestion word;
+
         NextQuestion() {
-            word = PageReader.getWordObject();
-            optionsForAnswer = getOptions();
+            pageReader = new PageReader();
+            word = pageReader.getNextWordObject();
+            //optionsForAnswer = getOptions();
         }
     }
 
