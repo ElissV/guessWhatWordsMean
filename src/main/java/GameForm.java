@@ -66,7 +66,7 @@ public class GameForm {
 
     private void setScoreLabel() {
         int initialScore = 0;
-        int totalQuestions = Main.getQuestionsQty();
+        int totalQuestions = Main.getQuestionsQTY();
         scoreLabel.setText(initialScore + "/" + totalQuestions);
     }
 

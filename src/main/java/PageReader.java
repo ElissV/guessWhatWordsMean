@@ -26,23 +26,18 @@ class PageReader {
         return getValuesArray(driver);
     }
 
+    String getArray() {
+        WebDriver driver = getDriver();
+        String[] stringArray = getValuesArray(driver);
+        StringBuffer sb = new StringBuffer();
+        for (String aStringArray : stringArray) {
+            sb.append(aStringArray).append("/");
+        }
+        return sb.toString();
+    }
+
     private void getNextQuestionWordsAndDefsArray() {
         getWordsAndDefsArray();
-    }
-
-    WordForQuestion getNextWordObject() {
-        PageReaderNextQuestion pageReader = new PageReaderNextQuestion();
-        WordForQuestion w = (WordForQuestion) pageReader.call();
-        System.out.println(w.getWord());
-        System.out.println(w.getDefinition());
-        return w;
-    }
-
-    class PageReaderNextQuestion implements Callable {
-        @Override
-        public Object call() {
-            return getWordObject();
-        }
     }
 
     private static WebDriver getDriver() {

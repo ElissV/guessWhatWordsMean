@@ -9,7 +9,7 @@ class Question {
     private List<String> optionsForAnswer;
 
 
-    Question() {
+    void createQuestion() {
         pageReader = new PageReader();
         word = pageReader.getWordObject();
         optionsForAnswer = getOptions();
@@ -20,18 +20,6 @@ class Question {
         options.add(word.getDefinition());
         Collections.shuffle(options);
         return options;
-    }
-
-    class NextQuestion extends Question {
-
-        private PageReader pageReader;
-        private WordForQuestion word;
-
-        NextQuestion() {
-            pageReader = new PageReader();
-            word = pageReader.getNextWordObject();
-            //optionsForAnswer = getOptions();
-        }
     }
 
     boolean isRightAnswer(String answer) {

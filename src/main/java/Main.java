@@ -2,16 +2,13 @@ import javax.swing.*;
 
 public class Main {
 
+    private static Game game;
     private static GameForm gameForm;
-    private static Question question;
-    private static Question nextQuestion;
-    private static final int QUESTIONS_QTY = 10;
-    private static int questionsAnswered = 0;
-    private static int rightAnswersGiven = 0;
+
 
     public static void main(String[] args) {
         gameForm = new GameForm();
-        askQuestion();
+        game = new Game(gameForm);
     }
 
     void showErrorMessage(Exception e) {
@@ -20,16 +17,12 @@ public class Main {
         e.printStackTrace();
     }
 
-    private static void askQuestion() {
-        question = new Question();
-        gameForm.showQuestion(question);
-    }
-
-    static int getQuestionsQty() {
-        return QUESTIONS_QTY;
+    static int getQuestionsQTY() {
+        return game.getQUESTIONS_QTY();
     }
 
     static Question getQuestion() {
-        return question;
+        return game.getQuestion();
     }
+
 }
