@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 class PageReader {
 
@@ -28,10 +30,12 @@ class PageReader {
     String getArray() {
         WebDriver driver = getDriver();
         String[] stringArray = getValuesArray(driver);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (String aStringArray : stringArray) {
             sb.append(aStringArray).append("/");
         }
+        String d = sb.toString();
+        System.out.println(d);
         return sb.toString();
     }
 
@@ -48,13 +52,7 @@ class PageReader {
     private ChromeOptions getOptions() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
-        options.addArguments("start-maximized");
-        options.addArguments("enable-automation");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-infobars");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-browser-side-navigation");
-        options.addArguments("--disable-gpu");
+        options.setPageLoadStrategy(PageLoadStrategy.EAGER);
         return options;
     }
 

@@ -26,6 +26,7 @@ class Game {
     class NextQuestionReader implements Callable<String> {
         @Override
         public String call() {
+            System.out.println("START");
             PageReader reader = new PageReader();
             return reader.getArray();
         }
