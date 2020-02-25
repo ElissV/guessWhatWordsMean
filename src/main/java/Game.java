@@ -16,8 +16,8 @@ class Game {
     }
 
     void askQuestion() {
-        /*ExecutorService service = Executors.newFixedThreadPool(1);
-        Future<String> task    = service.submit(new NextQuestionReader());*/
+        ExecutorService service = Executors.newFixedThreadPool(1);
+        Future<String> task    = service.submit(new NextQuestionReader());
         question = new Question();
         question.createQuestion();
         gameForm.showQuestion(question);

@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 class PageReader {
 
@@ -36,19 +35,27 @@ class PageReader {
         return sb.toString();
     }
 
-    private void getNextQuestionWordsAndDefsArray() {
-        getWordsAndDefsArray();
-    }
-
-    private static WebDriver getDriver() {
+    private WebDriver getDriver() {
         System.setProperty("webdriver.chrome.driver",
                 "D:\\Software\\Chrome_download\\chromedriver\\chromedriver.exe");
         String url = "https://www.randomlists.com/random-vocabulary-words";
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
+        ChromeOptions options = getOptions();
         WebDriver driver = new ChromeDriver(options);
         driver.get(url);
         return driver;
+    }
+
+    private ChromeOptions getOptions() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        options.addArguments("start-maximized");
+        options.addArguments("enable-automation");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-infobars");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-browser-side-navigation");
+        options.addArguments("--disable-gpu");
+        return options;
     }
 
     private String[] getValuesArray(WebDriver driver) {
