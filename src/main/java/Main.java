@@ -2,13 +2,13 @@ import javax.swing.*;
 
 public class Main {
 
-    private static Game game;
     private static GameForm gameForm;
-
+    private static Game game;
 
     public static void main(String[] args) {
         gameForm = new GameForm();
         game = new Game(gameForm);
+        game.askQuestion();
     }
 
     void showErrorMessage(Exception e) {

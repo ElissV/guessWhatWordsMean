@@ -13,6 +13,7 @@ class Question {
         pageReader = new PageReader();
         word = pageReader.getWordObject();
         optionsForAnswer = getOptions();
+        System.out.println(word.getWord() + " | " + word.getDefinition());
     }
 
     private List<String> getOptions() {

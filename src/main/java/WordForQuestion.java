@@ -7,7 +7,6 @@ class WordForQuestion {
     WordForQuestion(String word, String definition) {
         this.word = word;
         this.definition = definition;
-        System.out.println("> " + definition);
     }
 
     boolean equalsWordsDefinition(String definition) {

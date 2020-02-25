@@ -3,24 +3,21 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class Game {
+class Game {
 
     private GameForm gameForm;
     private Question question;
     private Question nextQuestion;
-    private final int QUESTIONS_QTY = 10;
     private int questionsAnswered = 0;
     private int rightAnswersGiven = 0;
 
     Game (GameForm gameForm) {
         this.gameForm = gameForm;
-        askQuestion();
     }
 
-    private void askQuestion() {
-        ExecutorService service = Executors.newFixedThreadPool(1);
-        Future<String> task    = service.submit(new NextQuestionReader());
-        System.out.println(task);
+    void askQuestion() {
+        /*ExecutorService service = Executors.newFixedThreadPool(1);
+        Future<String> task    = service.submit(new NextQuestionReader());*/
         question = new Question();
         question.createQuestion();
         gameForm.showQuestion(question);
@@ -39,6 +36,7 @@ public class Game {
     }
 
     int getQUESTIONS_QTY() {
+        int QUESTIONS_QTY = 10;
         return QUESTIONS_QTY;
     }
 
