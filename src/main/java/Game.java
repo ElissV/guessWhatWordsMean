@@ -3,8 +3,8 @@ class Game {
 
     private static final int QUESTIONS_QTY = 10;
     private GameForm gameForm;
-    private CurrentQuestion question;
-    private CurrentQuestion nextQuestion;
+    private Question question;
+    private Question nextQuestion;
     private int questionsAnswered = 0;
     private int rightAnswersGiven = 0;
 
@@ -14,13 +14,11 @@ class Game {
 
     void askQuestion() {
         nextQuestion = new NextQuestion();
-        //nextQuestion.createQuestion();
         question = new CurrentQuestion();
-        question.createQuestion();
         gameForm.showQuestion(question);
     }
 
-    CurrentQuestion getQuestion() {
+    Question getQuestion() {
         return question;
     }
 

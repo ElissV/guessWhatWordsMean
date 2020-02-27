@@ -21,7 +21,7 @@ public class Main {
         return game.getQUESTIONS_QTY();
     }
 
-    static CurrentQuestion getQuestion() {
+    static Question getQuestion() {
         return game.getQuestion();
     }
 

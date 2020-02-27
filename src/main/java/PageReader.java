@@ -15,7 +15,6 @@ class PageReader {
 
 
     WordForQuestion getWordObject() {
-        System.out.println("DDDDDDD");
         wordsAndDefinitions = getWordsAndDefsArray();
         String word = wordsAndDefinitions[0];
         String definition = wordsAndDefinitions[1];
@@ -34,7 +33,6 @@ class PageReader {
         for (String aStringArray : stringArray) {
             sb.append(aStringArray).append("/");
         }
-        System.out.println(sb);
         driver.quit();
         return sb.toString();
     }
