@@ -1,7 +1,7 @@
 import java.util.Collections;
 import java.util.List;
 
-abstract class Question {
+class Question {
 
     static final int OTHER_ANSWER_OPTIONS = 3;
     PageReader pageReader;
@@ -9,10 +9,15 @@ abstract class Question {
     List<String> optionsForAnswer;
 
 
+    Question() {
+        createQuestion();
+    }
+
     void createQuestion() {
         pageReader = new PageReader();
         questionWord = pageReader.getWordObject();
         optionsForAnswer = getOptions();
+        System.out.println("Created");
     }
 
     private List<String> getOptions() {

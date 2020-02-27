@@ -13,9 +13,15 @@ class Game {
     }
 
     void askQuestion() {
-        nextQuestion = new NextQuestion();
-        question = new CurrentQuestion();
+        getNextQuestion();
+        question = new Question();
         gameForm.showQuestion(question);
+    }
+
+    private void getNextQuestion() {
+        Runnable questionCreatorRunnable = () ->
+                nextQuestion = new Question();
+        new Thread(questionCreatorRunnable).start();
     }
 
     Question getQuestion() {
