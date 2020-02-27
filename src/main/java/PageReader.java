@@ -26,17 +26,6 @@ class PageReader {
         return getValuesArray(driver);
     }
 
-    String getValues() {
-        WebDriver driver = getDriver();
-        String[] stringArray = getValuesArray(driver);
-        StringBuilder sb = new StringBuilder();
-        for (String aStringArray : stringArray) {
-            sb.append(aStringArray).append("/");
-        }
-        driver.quit();
-        return sb.toString();
-    }
-
     private WebDriver getDriver() {
         System.setProperty("webdriver.chrome.driver",
                 "D:\\Software\\Chrome_download\\chromedriver\\chromedriver.exe");

@@ -56,7 +56,7 @@ public class GameForm {
 
     void showQuestion(Question question) {
         setWordAndScore(question.getQuestionWord());
-        //setButtonsText(question.getOptionsForAnswer());
+        setButtonsText(question.getOptionsForAnswer());
     }
 
     private void setWordAndScore(WordForQuestion word) {

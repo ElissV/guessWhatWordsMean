@@ -22,27 +22,6 @@ abstract class Question {
         return options;
     }
 
-   /* void createQuestion() {
-        String[] valuesArray = getValuesArray();
-        createWord(valuesArray);
-        System.out.println(this.getClass() + " created!!!");
-    }*/
-
-    /*void createWord(String[] values) {
-        String word = values[0];
-        //String description = values[1];
-        questionWord = new WordForQuestion(word, "d");
-        System.out.println(this.getClass() + " " + word + " ");
-    }
-
-    String[] getValuesArray() {
-        String values = getAllValues();
-        System.out.println(this.getClass() + " values " + values);
-        return values.split("/");
-    }*/
-
-    //abstract String getAllValues();
-
     boolean isRightAnswer(String answer) {
         return answer.equals(questionWord.getDefinition());
     }
