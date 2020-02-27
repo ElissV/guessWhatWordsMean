@@ -54,7 +54,7 @@ public class GameForm {
         answers2.setPreferredSize(new Dimension(jFrame.getWidth(), 180));
     }
 
-    void showQuestion(Question question) {
+    void showQuestion(CurrentQuestion question) {
         setWordAndScore(question.getWord());
         setButtonsText(question.getOptionsForAnswer());
     }
@@ -71,7 +71,7 @@ public class GameForm {
     }
 
     private void setButtonsText(List<String> text) {
-        Question q = Main.getQuestion();
+        CurrentQuestion q = Main.getQuestion();
         JButton[] jButtons = getJButtonArray();
         int i = 0;
         for (JButton button : jButtons) {

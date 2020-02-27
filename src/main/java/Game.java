@@ -1,9 +1,10 @@
 
 class Game {
 
+    private static final int QUESTIONS_QTY = 10;
     private GameForm gameForm;
-    private Question question;
-    private Question nextQuestion;
+    private CurrentQuestion question;
+    private CurrentQuestion nextQuestion;
     private int questionsAnswered = 0;
     private int rightAnswersGiven = 0;
 
@@ -12,19 +13,18 @@ class Game {
     }
 
     void askQuestion() {
-        question = new Question();
-        question.createQuestion();
         nextQuestion = new NextQuestion();
-        nextQuestion.createQuestion();
+        //nextQuestion.createQuestion();
+        question = new CurrentQuestion();
+        question.createQuestion();
         gameForm.showQuestion(question);
     }
 
-    Question getQuestion() {
+    CurrentQuestion getQuestion() {
         return question;
     }
 
     int getQUESTIONS_QTY() {
-        int QUESTIONS_QTY = 10;
         return QUESTIONS_QTY;
     }
 

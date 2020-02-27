@@ -15,6 +15,7 @@ class PageReader {
 
 
     WordForQuestion getWordObject() {
+        System.out.println("DDDDDDD");
         wordsAndDefinitions = getWordsAndDefsArray();
         String word = wordsAndDefinitions[0];
         String definition = wordsAndDefinitions[1];
@@ -26,13 +27,15 @@ class PageReader {
         return getValuesArray(driver);
     }
 
-    String getArray() {
+    String getValues() {
         WebDriver driver = getDriver();
         String[] stringArray = getValuesArray(driver);
         StringBuilder sb = new StringBuilder();
         for (String aStringArray : stringArray) {
             sb.append(aStringArray).append("/");
         }
+        System.out.println(sb);
+        driver.quit();
         return sb.toString();
     }
 
