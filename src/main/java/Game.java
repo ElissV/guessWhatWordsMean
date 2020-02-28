@@ -15,7 +15,8 @@ class Game {
     void askQuestion() {
         getNextQuestion();
         question = new Question();
-        gameForm.showQuestion(question);
+        gameForm.setGameAndQuestion(this, question);
+        gameForm.showQuestion();
     }
 
     private void getNextQuestion() {
@@ -32,4 +33,11 @@ class Game {
         return QUESTIONS_QTY;
     }
 
+    public int getQuestionsAnswered() {
+        return questionsAnswered;
+    }
+
+    public int getRightAnswersGiven() {
+        return rightAnswersGiven;
+    }
 }

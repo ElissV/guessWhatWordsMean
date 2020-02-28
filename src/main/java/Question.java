@@ -16,11 +16,11 @@ class Question {
     void createQuestion() {
         pageReader = new PageReader();
         question = pageReader.getWordObject();
-        optionsForAnswer = getOptions();
+        optionsForAnswer = createOptions();
         System.out.println("Created");
     }
 
-    private List<String> getOptions() {
+    private List<String> createOptions() {
         List<String> options = pageReader.getOtherOptionsForAnswer();
         options.add(question.getDefinition());
         Collections.shuffle(options);

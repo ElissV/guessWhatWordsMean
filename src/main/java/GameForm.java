@@ -5,7 +5,8 @@ import java.util.List;
 
 public class GameForm {
 
-    private Question currentQuestion;
+    private Game game;
+    private Question question;
 
     private JFrame jFrame;
     private JPanel panel1;
@@ -57,29 +58,28 @@ public class GameForm {
         answers2.setPreferredSize(new Dimension(jFrame.getWidth(), 180));
     }
 
-    void showQuestion(Question question) {
-        currentQuestion = question;
+    void showQuestion() {
         setWordAndScore();
-        setButtonsText(question.getOptionsForAnswer());
+        setButtonsText();
     }
 
     private void setWordAndScore() {
-        setScoreLabelInitialValue();
-        questionLabel.setText(currentQuestion.getWord());
+        setScoreLabelText();
+        questionLabel.setText(question.getWord());
     }
 
-    private void setScoreLabelInitialValue() {
-        int initialScore = 0;
-        int totalQuestions = Main.getQuestionsQTY();
-        scoreLabel.setText(initialScore + "/" + totalQuestions);
+    private void setScoreLabelText() {
+        int rightAnswers = game.getRightAnswersGiven();
+        int questionsShown = game.getQuestionsAnswered();
+        scoreLabel.setText(rightAnswers + "/" + questionsShown);
     }
 
-    private void setButtonsText(List<String> text) {
-        Question q = Main.getQuestion();
+    private void setButtonsText() {
+        List<String> options = question.getOptionsForAnswer();
         JButton[] jButtons = getJButtonArray();
         int i = 0;
         for (JButton button : jButtons) {
-            button.setText(text.get(i));
+            button.setText(options.get(i));
             button.addActionListener(listener);
             i++;
         }
@@ -97,7 +97,7 @@ public class GameForm {
     private ActionListener listener = e -> {
         String answer = e.getActionCommand();
         JButton clicked = (JButton) e.getSource();
-        if (currentQuestion.isRightAnswer(answer)) {
+        if (question.isRightAnswer(answer)) {
             Color green = Color.decode("#64DF58");
             clicked.setBackground(green);
         } else {
@@ -105,6 +105,7 @@ public class GameForm {
             clicked.setBackground(red);
             showRightAnswer();
         }
+
     };
 
     private void showRightAnswer() {
@@ -120,10 +121,15 @@ public class GameForm {
         JButton[] jButtons = getJButtonArray();
         for (JButton j : jButtons) {
             String buttonText = j.getText();
-            if (currentQuestion.isRightAnswer(buttonText))
+            if (question.isRightAnswer(buttonText))
                 return j;
         }
         return null;
+    }
+
+    void setGameAndQuestion(Game game, Question question) {
+        this.game = game;
+        this.question = question;
     }
 
     JFrame getjFrame() {
