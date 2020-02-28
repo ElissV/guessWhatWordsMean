@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class GameForm {
@@ -31,6 +30,7 @@ public class GameForm {
         placeElements();
         jFrame.setResizable(false);
         jFrame.setVisible(true);
+        addListeners();
     }
 
     private void jFrameCentralize() {
@@ -60,12 +60,12 @@ public class GameForm {
     }
 
     void showQuestion() {
-        setWordAndScore();
+        setQuestionLabelText();
         setButtonsText();
     }
 
-    private void setWordAndScore() {
-        setScoreLabelText();
+    private void setQuestionLabelText() {
+        //setScoreLabelText();
         questionLabel.setText(question.getWord());
     }
 
@@ -73,6 +73,14 @@ public class GameForm {
         int rightAnswers = game.getRightAnswersGiven();
         int questionsShown = game.getQuestionsAnswered();
         scoreLabel.setText(rightAnswers + "/" + questionsShown);
+    }
+
+    private void addListeners() {
+        JButton[] jButtons = getJButtonArray();
+        for (JButton button : jButtons) {
+            button.addActionListener(listener);
+            button.addKeyListener(keyListener);
+        }
     }
 
     private void setButtonsText() {
@@ -83,8 +91,6 @@ public class GameForm {
         for (JButton button : jButtons) {
             button.setText(options.get(i));
             button.setBackground(defaultColor);
-            button.addActionListener(listener);
-            button.addKeyListener(keyListener);
             i++;
         }
     }
@@ -99,6 +105,7 @@ public class GameForm {
     }
 
     private ActionListener listener = e -> {
+        System.out.println(e.getID());
         String answer = e.getActionCommand();
         JButton clicked = (JButton) e.getSource();
         if (question.isRightAnswer(answer)) {
@@ -109,9 +116,11 @@ public class GameForm {
             clicked.setBackground(red);
             showRightAnswer();
         }
+        game.gotAnswer(answer);
+        setScoreLabelText();
     };
 
-    KeyListener keyListener = new KeyListener() {
+    private KeyListener keyListener = new KeyListener() {
         @Override
         public void keyTyped(KeyEvent e) {
         }

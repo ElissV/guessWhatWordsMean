@@ -33,6 +33,13 @@ class Game {
         return QUESTIONS_QTY;
     }
 
+    void gotAnswer(String answer) {
+        System.out.println("CHECK");
+        if (question.isRightAnswer(answer))
+            rightAnswersGiven++;
+        questionsAnswered++;
+    }
+
     public int getQuestionsAnswered() {
         return questionsAnswered;
     }
