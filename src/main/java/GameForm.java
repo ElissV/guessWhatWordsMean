@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class GameForm {
@@ -78,9 +79,12 @@ public class GameForm {
         List<String> options = question.getOptionsForAnswer();
         JButton[] jButtons = getJButtonArray();
         int i = 0;
+        Color defaultColor = new Color(230,232,226);
         for (JButton button : jButtons) {
             button.setText(options.get(i));
+            button.setBackground(defaultColor);
             button.addActionListener(listener);
+            button.addKeyListener(keyListener);
             i++;
         }
     }
@@ -105,7 +109,23 @@ public class GameForm {
             clicked.setBackground(red);
             showRightAnswer();
         }
+    };
 
+    KeyListener keyListener = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode()==KeyEvent.VK_ENTER){
+                game.askQuestion();
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+        }
     };
 
     private void showRightAnswer() {
