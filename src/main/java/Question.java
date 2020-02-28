@@ -5,7 +5,7 @@ class Question {
 
     static final int OTHER_ANSWER_OPTIONS = 3;
     PageReader pageReader;
-    WordForQuestion questionWord;
+    WordForQuestion question;
     List<String> optionsForAnswer;
 
 
@@ -15,32 +15,36 @@ class Question {
 
     void createQuestion() {
         pageReader = new PageReader();
-        questionWord = pageReader.getWordObject();
+        question = pageReader.getWordObject();
         optionsForAnswer = getOptions();
         System.out.println("Created");
     }
 
     private List<String> getOptions() {
         List<String> options = pageReader.getOtherOptionsForAnswer();
-        options.add(questionWord.getDefinition());
+        options.add(question.getDefinition());
         Collections.shuffle(options);
         return options;
     }
 
     boolean isRightAnswer(String answer) {
-        return answer.equals(questionWord.getDefinition());
+        return answer.equals(question.getDefinition());
     }
 
     List<String> getOptionsForAnswer() {
         return optionsForAnswer;
     }
 
+    public String getWord() {
+        return question.getWord();
+    }
+
     static int getAnswerOptions() {
         return OTHER_ANSWER_OPTIONS;
     }
 
-    WordForQuestion getQuestionWord() {
-        return questionWord;
+    WordForQuestion getQuestion() {
+        return question;
     }
 
 }

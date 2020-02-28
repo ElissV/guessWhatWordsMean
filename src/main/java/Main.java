@@ -11,10 +11,8 @@ public class Main {
         game.askQuestion();
     }
 
-    void showErrorMessage(Exception e) {
-        String message = e.getClass() + "\n" + e.getMessage();
-        JOptionPane.showMessageDialog(gameForm.getjFrame(), message);
-        e.printStackTrace();
+    public static void showMessage(String msg) {
+        JOptionPane.showMessageDialog(gameForm.getjFrame(), msg);
     }
 
     static int getQuestionsQTY() {

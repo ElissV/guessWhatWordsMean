@@ -16,6 +16,9 @@ class PageReader {
 
     WordForQuestion getWordObject() {
         wordsAndDefinitions = getWordsAndDefsArray();
+        for (String s : wordsAndDefinitions)
+            System.out.println(s);
+        System.out.println("");
         String word = wordsAndDefinitions[0];
         String definition = wordsAndDefinitions[1];
         return new WordForQuestion(word, definition);

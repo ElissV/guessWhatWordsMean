@@ -1,8 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class GameForm {
+
+    private Question currentQuestion;
 
     private JFrame jFrame;
     private JPanel panel1;
@@ -55,16 +58,17 @@ public class GameForm {
     }
 
     void showQuestion(Question question) {
-        setWordAndScore(question.getQuestionWord());
+        currentQuestion = question;
+        setWordAndScore();
         setButtonsText(question.getOptionsForAnswer());
     }
 
-    private void setWordAndScore(WordForQuestion word) {
-        setScoreLabel();
-        questionLabel.setText(word.getWord());
+    private void setWordAndScore() {
+        setScoreLabelInitialValue();
+        questionLabel.setText(currentQuestion.getWord());
     }
 
-    private void setScoreLabel() {
+    private void setScoreLabelInitialValue() {
         int initialScore = 0;
         int totalQuestions = Main.getQuestionsQTY();
         scoreLabel.setText(initialScore + "/" + totalQuestions);
@@ -76,8 +80,7 @@ public class GameForm {
         int i = 0;
         for (JButton button : jButtons) {
             button.setText(text.get(i));
-            if (q.isRightAnswer(text.get(i)))
-                button.setBackground(Color.GREEN);
+            button.addActionListener(listener);
             i++;
         }
     }
@@ -89,6 +92,38 @@ public class GameForm {
         jButtons[2] = button3;
         jButtons[3] = button4;
         return jButtons;
+    }
+
+    private ActionListener listener = e -> {
+        String answer = e.getActionCommand();
+        JButton clicked = (JButton) e.getSource();
+        if (currentQuestion.isRightAnswer(answer)) {
+            Color green = Color.decode("#64DF58");
+            clicked.setBackground(green);
+        } else {
+            Color red = Color.decode("#DC3232");
+            clicked.setBackground(red);
+            showRightAnswer();
+        }
+    };
+
+    private void showRightAnswer() {
+        JButton button = getButtonWithRightAnswer();
+        if (button != null) {
+            Color green = Color.decode("#64DF58");
+            button.setBackground(green);
+        } else
+            Main.showMessage("Error.\nRight answer not found.");
+    }
+
+    private JButton getButtonWithRightAnswer() {
+        JButton[] jButtons = getJButtonArray();
+        for (JButton j : jButtons) {
+            String buttonText = j.getText();
+            if (currentQuestion.isRightAnswer(buttonText))
+                return j;
+        }
+        return null;
     }
 
     JFrame getjFrame() {
