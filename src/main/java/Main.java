@@ -8,10 +8,18 @@ public class Main {
     public static void main(String[] args) {
         gameForm = new GameForm();
         game = new Game(gameForm);
-        game.askQuestion();
+        showInitialMessage();
+        game.askFirstQuestion();
     }
 
-    public static void showMessage(String msg) {
+    private static void showInitialMessage() {
+        Runnable questionCreatorRunnable = () ->
+                showMessage("In this game you have to guess the meaning of 10 words.\n" +
+                        "Press ENTER to go to next question after answering.");
+        new Thread(questionCreatorRunnable).start();
+    }
+
+    static void showMessage(String msg) {
         JOptionPane.showMessageDialog(gameForm.getjFrame(), msg);
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 public class GameForm {
 
     private Game game;
-    private Question question;
+    private boolean waitsForQuestion = false;
 
     private JFrame jFrame;
     private JPanel panel1;
@@ -30,7 +30,6 @@ public class GameForm {
         placeElements();
         jFrame.setResizable(false);
         jFrame.setVisible(true);
-        addListeners();
     }
 
     private void jFrameCentralize() {
@@ -60,13 +59,16 @@ public class GameForm {
     }
 
     void showQuestion() {
+        if (game.getQuestionsAnswered() == 0)
+            addListeners();
         setQuestionLabelText();
         setButtonsText();
     }
 
     private void setQuestionLabelText() {
         //setScoreLabelText();
-        questionLabel.setText(question.getWord());
+        String word = getQuestion().getWord();
+        questionLabel.setText(word);
     }
 
     private void setScoreLabelText() {
@@ -84,7 +86,8 @@ public class GameForm {
     }
 
     private void setButtonsText() {
-        List<String> options = question.getOptionsForAnswer();
+        Question q = getQuestion();
+        List<String> options = q.getOptionsForAnswer();
         JButton[] jButtons = getJButtonArray();
         int i = 0;
         Color defaultColor = new Color(230,232,226);
@@ -105,10 +108,10 @@ public class GameForm {
     }
 
     private ActionListener listener = e -> {
-        System.out.println(e.getID());
         String answer = e.getActionCommand();
         JButton clicked = (JButton) e.getSource();
-        if (question.isRightAnswer(answer)) {
+        Question q = getQuestion();
+        if (q.isRightAnswer(answer)) {
             Color green = Color.decode("#64DF58");
             clicked.setBackground(green);
         } else {
@@ -148,21 +151,32 @@ public class GameForm {
 
     private JButton getButtonWithRightAnswer() {
         JButton[] jButtons = getJButtonArray();
+        Question q = getQuestion();
         for (JButton j : jButtons) {
             String buttonText = j.getText();
-            if (question.isRightAnswer(buttonText))
+            if (q.isRightAnswer(buttonText))
                 return j;
         }
         return null;
     }
 
-    void setGameAndQuestion(Game game, Question question) {
+    private Question getQuestion() {
+        return game.getQuestion();
+    }
+
+    void setGameAndQuestion(Game game) {
         this.game = game;
-        this.question = question;
     }
 
     JFrame getjFrame() {
         return jFrame;
     }
 
+    public void setWaitsForQuestion(boolean waitsForQuestion) {
+        this.waitsForQuestion = waitsForQuestion;
+    }
+
+    public boolean waitsForQuestion() {
+        return waitsForQuestion;
+    }
 }

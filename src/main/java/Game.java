@@ -13,10 +13,24 @@ class Game {
     }
 
     void askQuestion() {
+        getCurrentAndNextQuestion();
+    }
+
+    void askFirstQuestion() {
         getNextQuestion();
         question = new Question();
-        gameForm.setGameAndQuestion(this, question);
+        gameForm.setGameAndQuestion(this);
         gameForm.showQuestion();
+    }
+
+    private void getCurrentAndNextQuestion() {
+        System.out.println("CREATE NEXT QUESTION: " + nextQuestion.questionIsBeingCreated());
+        question = nextQuestion;
+        System.out.println(question.getWord() + " | " + nextQuestion.getWord());
+        gameForm.showQuestion();
+        if (!nextQuestion.questionIsBeingCreated()) {
+            getNextQuestion();
+        }
     }
 
     private void getNextQuestion() {
@@ -34,7 +48,6 @@ class Game {
     }
 
     void gotAnswer(String answer) {
-        System.out.println("CHECK");
         if (question.isRightAnswer(answer))
             rightAnswersGiven++;
         questionsAnswered++;

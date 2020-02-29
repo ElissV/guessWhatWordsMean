@@ -16,11 +16,11 @@ class PageReader {
 
     WordForQuestion getWordObject() {
         wordsAndDefinitions = getWordsAndDefsArray();
-        for (String s : wordsAndDefinitions)
-            System.out.println(">>>> " + s);
+        /*for (String s : wordsAndDefinitions)
+            System.out.println(">>>> " + s);*/
         String word = wordsAndDefinitions[0];
-        System.out.println("FIRST " + word);
-        System.out.println("");
+        /*System.out.println("FIRST " + word);
+        System.out.println("");*/
         String definition = wordsAndDefinitions[1];
         return new WordForQuestion(word, definition);
     }
