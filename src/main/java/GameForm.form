@@ -23,7 +23,7 @@
               <font size="20"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
-              <text value="Word"/>
+              <text value="Loading..."/>
             </properties>
           </component>
           <component id="7199b" class="javax.swing.JLabel" binding="scoreLabel">

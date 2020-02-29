@@ -6,7 +6,7 @@ import java.util.List;
 public class GameForm {
 
     private Game game;
-    private boolean waitsForQuestion = false;
+    //private boolean waitsForQuestion = false;
 
     private JFrame jFrame;
     private JPanel panel1;
@@ -121,6 +121,7 @@ public class GameForm {
         }
         game.gotAnswer(answer);
         setScoreLabelText();
+        game.setWaitsForAnswerFalse();
     };
 
     private KeyListener keyListener = new KeyListener() {
@@ -161,7 +162,7 @@ public class GameForm {
     }
 
     private Question getQuestion() {
-        return game.getQuestion();
+        return game.getCurrentQuestion();
     }
 
     void setGameAndQuestion(Game game) {
@@ -172,11 +173,19 @@ public class GameForm {
         return jFrame;
     }
 
-    public void setWaitsForQuestion(boolean waitsForQuestion) {
+    String getQuestionLabelText() {
+        return questionLabel.getText();
+    }
+
+    void wordIsLoading() {
+        questionLabel.setText("Loading...");
+    }
+
+    /*public void setWaitsForQuestion(boolean waitsForQuestion) {
         this.waitsForQuestion = waitsForQuestion;
     }
 
     public boolean waitsForQuestion() {
         return waitsForQuestion;
-    }
+    }*/
 }

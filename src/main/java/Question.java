@@ -7,7 +7,7 @@ class Question {
     PageReader pageReader;
     WordForQuestion question;
     List<String> optionsForAnswer;
-    private boolean questionIsBeingCreated = false;
+    private boolean questionIsBeingCreated = false; // TO DO: move to NextQuestion
 
 
     Question() {

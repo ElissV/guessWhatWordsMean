@@ -3,8 +3,10 @@ class Game {
 
     private static final int QUESTIONS_QTY = 10;
     private GameForm gameForm;
-    private Question question;
+    private Question currentQuestion;
     private Question nextQuestion;
+    private boolean userWaitsForQuestion = false;
+    private boolean programWaitsForAnswer = true;
     private int questionsAnswered = 0;
     private int rightAnswersGiven = 0;
 
@@ -12,21 +14,30 @@ class Game {
         this.gameForm = gameForm;
     }
 
-    void askQuestion() {
-        getCurrentAndNextQuestion();
-    }
-
     void askFirstQuestion() {
         getNextQuestion();
-        question = new Question();
+        currentQuestion = new Question();
         gameForm.setGameAndQuestion(this);
         gameForm.showQuestion();
     }
 
+    void askQuestion() {
+        if (!programWaitsForAnswer) {
+            getCurrentAndNextQuestion();
+            programWaitsForAnswer = true;
+        }
+    }
+
     private void getCurrentAndNextQuestion() {
-        System.out.println("CREATE NEXT QUESTION: " + nextQuestion.questionIsBeingCreated());
-        question = nextQuestion;
-        System.out.println(question.getWord() + " | " + nextQuestion.getWord());
+        String askedQuestion = gameForm.getQuestionLabelText();
+        if (askedQuestion.equals(currentQuestion.getWord())) {
+            if (askedQuestion.equals(nextQuestion.getWord())) {
+                userWaitsForQuestion = true;
+                gameForm.wordIsLoading();
+                return;
+            }
+        }
+        currentQuestion = nextQuestion;
         gameForm.showQuestion();
         if (!nextQuestion.questionIsBeingCreated()) {
             getNextQuestion();
@@ -34,13 +45,22 @@ class Game {
     }
 
     private void getNextQuestion() {
-        Runnable questionCreatorRunnable = () ->
-                nextQuestion = new Question();
+        Runnable questionCreatorRunnable =
+                this::createNewQuestionAndCheck;
         new Thread(questionCreatorRunnable).start();
     }
 
-    Question getQuestion() {
-        return question;
+    private void createNewQuestionAndCheck() {
+        nextQuestion = new Question();
+        if (userWaitsForQuestion) {
+            currentQuestion = nextQuestion;
+            gameForm.showQuestion();
+            nextQuestion = new Question();
+        }
+    }
+
+    Question getCurrentQuestion() {
+        return currentQuestion;
     }
 
     int getQUESTIONS_QTY() {
@@ -48,16 +68,20 @@ class Game {
     }
 
     void gotAnswer(String answer) {
-        if (question.isRightAnswer(answer))
+        if (currentQuestion.isRightAnswer(answer))
             rightAnswersGiven++;
         questionsAnswered++;
     }
 
-    public int getQuestionsAnswered() {
+    void setWaitsForAnswerFalse() {
+        programWaitsForAnswer = false;
+    }
+
+    int getQuestionsAnswered() {
         return questionsAnswered;
     }
 
-    public int getRightAnswersGiven() {
+    int getRightAnswersGiven() {
         return rightAnswersGiven;
     }
 }

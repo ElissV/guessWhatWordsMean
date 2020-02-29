@@ -28,7 +28,7 @@ public class Main {
     }
 
     static Question getQuestion() {
-        return game.getQuestion();
+        return game.getCurrentQuestion();
     }
 
 }
