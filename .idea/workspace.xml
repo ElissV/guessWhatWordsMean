@@ -4,11 +4,6 @@
     <list default="true" id="21f3db11-8835-468e-864a-bb0fb4fc508f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PageReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PageReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Question.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +115,7 @@
       <workItem from="1582896953075" duration="15226000" />
       <workItem from="1582991203976" duration="2172000" />
       <workItem from="1582995059618" duration="10223000" />
-      <workItem from="1583011023536" duration="1890000" />
+      <workItem from="1583011023536" duration="2504000" />
     </task>
     <servers />
   </component>

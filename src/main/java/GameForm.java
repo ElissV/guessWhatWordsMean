@@ -108,20 +108,23 @@ public class GameForm {
     }
 
     private ActionListener listener = e -> {
-        String answer = e.getActionCommand();
-        JButton clicked = (JButton) e.getSource();
-        Question q = getQuestion();
-        if (q.isRightAnswer(answer)) {
-            Color green = Color.decode("#64DF58");
-            clicked.setBackground(green);
-        } else {
-            Color red = Color.decode("#DC3232");
-            clicked.setBackground(red);
-            showRightAnswer();
+        if (game.programWaitsForAnswer()) {
+            System.out.println("SSSS");
+            String answer = e.getActionCommand();
+            JButton clicked = (JButton) e.getSource();
+            Question q = getQuestion();
+            if (q.isRightAnswer(answer)) {
+                Color green = Color.decode("#64DF58");
+                clicked.setBackground(green);
+            } else {
+                Color red = Color.decode("#DC3232");
+                clicked.setBackground(red);
+                showRightAnswer();
+            }
+            game.gotAnswer(answer);
+            setScoreLabelText();
+            game.setWaitsForAnswerFalse();
         }
-        game.gotAnswer(answer);
-        setScoreLabelText();
-        game.setWaitsForAnswerFalse();
     };
 
     private KeyListener keyListener = new KeyListener() {

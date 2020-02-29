@@ -81,6 +81,10 @@ class Game {
         return questionsAnswered;
     }
 
+    public boolean programWaitsForAnswer() {
+        return programWaitsForAnswer;
+    }
+
     int getRightAnswersGiven() {
         return rightAnswersGiven;
     }
