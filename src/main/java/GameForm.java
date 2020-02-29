@@ -109,7 +109,6 @@ public class GameForm {
 
     private ActionListener listener = e -> {
         if (game.programWaitsForAnswer()) {
-            System.out.println("SSSS");
             String answer = e.getActionCommand();
             JButton clicked = (JButton) e.getSource();
             Question q = getQuestion();
@@ -184,11 +183,4 @@ public class GameForm {
         questionLabel.setText("Loading...");
     }
 
-    /*public void setWaitsForQuestion(boolean waitsForQuestion) {
-        this.waitsForQuestion = waitsForQuestion;
-    }
-
-    public boolean waitsForQuestion() {
-        return waitsForQuestion;
-    }*/
 }

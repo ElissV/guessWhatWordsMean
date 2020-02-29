@@ -23,12 +23,4 @@ public class Main {
         JOptionPane.showMessageDialog(gameForm.getjFrame(), msg);
     }
 
-    static int getQuestionsQTY() {
-        return game.getQUESTIONS_QTY();
-    }
-
-    static Question getQuestion() {
-        return game.getCurrentQuestion();
-    }
-
 }
