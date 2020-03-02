@@ -17,7 +17,6 @@ class PageReader {
     WordForQuestion getWordObject() {
         wordsAndDefinitions = getWordsAndDefsArray();
         String word = wordsAndDefinitions[0];
-        System.out.println("FIRST " + word);
         String definition = wordsAndDefinitions[1];
         return new WordForQuestion(word, definition);
     }
@@ -71,12 +70,7 @@ class PageReader {
         while (firstElement.equals(invalidResult)) {
             elements = driver.findElements(By.className("Rand-stage"));
             firstElement = elements.get(0).getText();
-            System.out.println("element '" + firstElement + "'");
         }
-        /*for (WebElement w : elements) {
-            String str = firstCharToUpperCase(w.getText());
-            System.out.println("Elem " + " {\n" + str + "\n}Elem");
-        }*/
         return elements;
     }
 

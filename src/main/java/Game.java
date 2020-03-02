@@ -1,14 +1,11 @@
-import org.w3c.dom.ls.LSOutput;
-
 class Game {
 
     private static final int QUESTIONS_QTY = 10;
     private GameForm gameForm;
     private Question currentQuestion;
     private Question nextQuestion;
-    private boolean userWaitsForQuestion = false;
     private boolean programWaitsForAnswer = true;
-    private int questionsAnswered = 0;
+    private int questionsAnswered = 9;
     private int rightAnswersGiven = 0;
 
     Game (GameForm gameForm) {
@@ -16,7 +13,7 @@ class Game {
     }
 
     void askFirstQuestion() {
-        gameForm.setGameAndQuestion(this);
+        gameForm.setGame(this);
         getNextQuestion();
         currentQuestion = new Question();
         gameForm.showQuestion();
@@ -24,7 +21,9 @@ class Game {
 
     void askQuestion() {
         if (questionsAnswered == 10) {
-            Main.showMessage("Your score is " + rightAnswersGiven + "/" + questionsAnswered);
+            Main.showMessage("Your score is " + rightAnswersGiven + "/" + questionsAnswered + "!\n" +
+                                "Press OK to try again.");
+            Main.startGame();
             return;
         }
         if (!programWaitsForAnswer) {
@@ -36,15 +35,11 @@ class Game {
     private void getCurrentAndNextQuestion() {
         String askedQuestion = gameForm.getQuestionLabelText();
         if (askedQuestion.equals("Loading...")) {
-            //System.out.println(currentQuestion.getWord() + " | " + nextQuestion.getWord());
             if (currentQuestion.getWord().equals(nextQuestion.getWord())) {
                 getNextQuestion();
-                System.out.println("1");
-                userWaitsForQuestion = true;
                 gameForm.wordIsLoading();
                 return;
             } else {
-                System.out.println("2");
                 currentQuestion = nextQuestion;
                 gameForm.showQuestion();
                 if (!nextQuestion.questionIsBeingCreated()) {
@@ -54,12 +49,9 @@ class Game {
         }
         if (currentQuestion.getWord().equals(nextQuestion.getWord())) {
             getNextQuestion();
-            System.out.println("3");
-            userWaitsForQuestion = true;
             gameForm.wordIsLoading();
             return;
         }
-        System.out.println("4");
         currentQuestion = nextQuestion;
         gameForm.showQuestion();
         if (!nextQuestion.questionIsBeingCreated()) {
@@ -75,7 +67,6 @@ class Game {
 
     private void createNewQuestionAndCheck() {
         nextQuestion = new Question();
-        System.out.println(gameForm.getQuestionLabelText() + " <<");
         if (gameForm.getQuestionLabelText().equals("Loading...")) {
             currentQuestion = nextQuestion;
             gameForm.showQuestion();
@@ -105,7 +96,7 @@ class Game {
         return questionsAnswered;
     }
 
-    public boolean programWaitsForAnswer() {
+    boolean programWaitsForAnswer() {
         return programWaitsForAnswer;
     }
 

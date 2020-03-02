@@ -6,7 +6,6 @@ import java.util.List;
 public class GameForm {
 
     private Game game;
-    //private boolean waitsForQuestion = false;
 
     private JFrame jFrame;
     private JPanel panel1;
@@ -30,6 +29,7 @@ public class GameForm {
         placeElements();
         jFrame.setResizable(false);
         jFrame.setVisible(true);
+        addListeners();
     }
 
     private void jFrameCentralize() {
@@ -58,10 +58,18 @@ public class GameForm {
         answers2.setPreferredSize(new Dimension(jFrame.getWidth(), 180));
     }
 
+    void setupFormForStart() {
+        JButton[] jButtons = getJButtonArray();
+        questionLabel.setText("Loading...");
+        scoreLabel.setText("0/0");
+        Color defaultColor = new Color(230,232,226);
+        for (JButton button : jButtons) {
+            button.setText("option");
+            button.setBackground(defaultColor);
+        }
+    }
+
     void showQuestion() {
-        System.out.println("SHOWING!!!!!!!!");
-        if (game.getQuestionsAnswered() == 0)
-            addListeners();
         setQuestionLabelText();
         setButtonsText();
     }
@@ -168,7 +176,7 @@ public class GameForm {
         return game.getCurrentQuestion();
     }
 
-    void setGameAndQuestion(Game game) {
+    void setGame(Game game) {
         this.game = game;
     }
 

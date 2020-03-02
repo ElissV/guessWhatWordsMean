@@ -7,8 +7,13 @@ public class Main {
 
     public static void main(String[] args) {
         gameForm = new GameForm();
-        game = new Game(gameForm);
         showInitialMessage();
+        startGame();
+    }
+
+    static void startGame() {
+        gameForm.setupFormForStart();
+        game = new Game(gameForm);
         game.askFirstQuestion();
     }
 
