@@ -23,6 +23,10 @@ class Game {
     }
 
     void askQuestion() {
+        if (questionsAnswered == 10) {
+            Main.showMessage("Your score is " + rightAnswersGiven + "/" + questionsAnswered);
+            return;
+        }
         if (!programWaitsForAnswer) {
             getCurrentAndNextQuestion();
             programWaitsForAnswer = true;

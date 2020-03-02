@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 class PageReader {
 
@@ -67,19 +66,17 @@ class PageReader {
 
     private List<WebElement> getPageContent(WebDriver driver) {
         List<WebElement> elements = null;
-        int elementsCount = 0;
-        while (elementsCount <= 1) {
+        String invalidResult = "LOADING…";
+        String firstElement = invalidResult;
+        while (firstElement.equals(invalidResult)) {
             elements = driver.findElements(By.className("Rand-stage"));
-            for (WebElement w : elements) {
-                elementsCount++;
-            }
+            firstElement = elements.get(0).getText();
+            System.out.println("element '" + firstElement + "'");
         }
         /*for (WebElement w : elements) {
             String str = firstCharToUpperCase(w.getText());
             System.out.println("Elem " + " {\n" + str + "\n}Elem");
-        }
-        System.out.println("COUNT " + elementsCount);
-        System.out.println("");*/
+        }*/
         return elements;
     }
 
