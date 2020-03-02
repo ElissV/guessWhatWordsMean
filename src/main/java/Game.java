@@ -5,7 +5,7 @@ class Game {
     private Question currentQuestion;
     private Question nextQuestion;
     private boolean programWaitsForAnswer = true;
-    private int questionsAnswered = 9;
+    private int questionsAnswered = 0;
     private int rightAnswersGiven = 0;
 
     Game (GameForm gameForm) {
@@ -13,6 +13,7 @@ class Game {
     }
 
     void askFirstQuestion() {
+        System.out.println(this);
         gameForm.setGame(this);
         getNextQuestion();
         currentQuestion = new Question();

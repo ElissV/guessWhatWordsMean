@@ -61,11 +61,14 @@ public class GameForm {
     void setupFormForStart() {
         JButton[] jButtons = getJButtonArray();
         questionLabel.setText("Loading...");
+        questionLabel.paintImmediately(questionLabel.getVisibleRect());
         scoreLabel.setText("0/0");
+        scoreLabel.paintImmediately(scoreLabel.getVisibleRect());
         Color defaultColor = new Color(230,232,226);
         for (JButton button : jButtons) {
             button.setText("option");
             button.setBackground(defaultColor);
+            button.paintImmediately(button.getVisibleRect());
         }
     }
 
@@ -75,7 +78,7 @@ public class GameForm {
     }
 
     private void setQuestionLabelText() {
-        //setScoreLabelText();
+        System.out.println(game);
         String word = getQuestion().getWord();
         questionLabel.setText(word);
     }
