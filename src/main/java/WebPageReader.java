@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class PageReader {
+class WebPageReader {
 
     private String[] wordsAndDefinitions;
 
@@ -80,7 +80,7 @@ class PageReader {
         return upperCaseChar + word.substring(1, lastCharIndex);
     }
 
-    List<String> getOtherOptionsForAnswer() {
+    List<String> getWrongOptionsForAnswer() {
         List<String> array = removeWordAndDefinitionForQuestion();
         return leaveOnlyThreeDefinitions(array);
     }

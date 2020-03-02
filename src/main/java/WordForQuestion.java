@@ -13,7 +13,7 @@ class WordForQuestion {
         return word;
     }
 
-    String getDefinition() {
+    String getRightDefinition() {
         return definition;
     }
 

@@ -16,7 +16,7 @@ class Game {
         System.out.println(this);
         gameForm.setGame(this);
         getNextQuestion();
-        currentQuestion = new Question();
+        currentQuestion = new CurrentQuestion();
         gameForm.showQuestion();
     }
 
@@ -36,7 +36,7 @@ class Game {
     private void getCurrentAndNextQuestion() {
         String askedQuestion = gameForm.getQuestionLabelText();
         if (askedQuestion.equals("Loading...")) {
-            if (currentQuestion.getWord().equals(nextQuestion.getWord())) {
+            if (currentQuestion.getWordForQuestion().equals(nextQuestion.getWordForQuestion())) {
                 getNextQuestion();
                 gameForm.wordIsLoading();
                 return;
@@ -48,7 +48,7 @@ class Game {
                 }
             }
         }
-        if (currentQuestion.getWord().equals(nextQuestion.getWord())) {
+        if (currentQuestion.getWordForQuestion().equals(nextQuestion.getWordForQuestion())) {
             getNextQuestion();
             gameForm.wordIsLoading();
             return;

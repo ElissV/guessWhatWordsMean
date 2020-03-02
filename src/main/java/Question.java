@@ -1,45 +1,37 @@
 import java.util.Collections;
 import java.util.List;
 
-class Question {
+abstract class Question {
 
-    private static final int OTHER_ANSWER_OPTIONS = 3;
-    private PageReader pageReader;
-    private WordForQuestion question;
+    private WebPageReader reader;
+    private WordForQuestion wordForQuestion;
     private List<String> optionsForAnswer;
 
 
     protected void createQuestion() {
-        pageReader = new PageReader();
-        question = pageReader.getWordObject();
-        optionsForAnswer = createOptions();
+        reader = new WebPageReader();
+        wordForQuestion = reader.getWordObject();
+        optionsForAnswer = createOptionsForAnswer();
     }
 
-    private List<String> createOptions() {
-        List<String> options = pageReader.getOtherOptionsForAnswer();
-        options.add(question.getDefinition());
+    private List<String> createOptionsForAnswer() {
+        List<String> options = reader.getWrongOptionsForAnswer();
+        options.add(wordForQuestion.getRightDefinition());
         Collections.shuffle(options);
         return options;
     }
 
     boolean isRightAnswer(String answer) {
-        return answer.equals(question.getDefinition());
+        String rightAnswer = wordForQuestion.getRightDefinition();
+        return answer.equals(rightAnswer);
     }
 
     List<String> getOptionsForAnswer() {
         return optionsForAnswer;
     }
 
-    public String getWord() {
-        return question.getWord();
-    }
-
-    static int getAnswerOptions() {
-        return OTHER_ANSWER_OPTIONS;
-    }
-
-    WordForQuestion getQuestion() {
-        return question;
+    String getWordForQuestion() {
+        return wordForQuestion.getWord();
     }
 
 }
