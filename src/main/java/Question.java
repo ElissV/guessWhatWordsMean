@@ -3,23 +3,16 @@ import java.util.List;
 
 class Question {
 
-    static final int OTHER_ANSWER_OPTIONS = 3;
-    PageReader pageReader;
-    WordForQuestion question;
-    List<String> optionsForAnswer;
-    private boolean questionIsBeingCreated = false; // TO DO: move to NextQuestion
+    private static final int OTHER_ANSWER_OPTIONS = 3;
+    private PageReader pageReader;
+    private WordForQuestion question;
+    private List<String> optionsForAnswer;
 
 
-    Question() {
-        questionIsBeingCreated = true;
-        createQuestion();
-    }
-
-    private void createQuestion() {
+    protected void createQuestion() {
         pageReader = new PageReader();
         question = pageReader.getWordObject();
         optionsForAnswer = createOptions();
-        questionIsBeingCreated = false;
     }
 
     private List<String> createOptions() {
@@ -39,14 +32,6 @@ class Question {
 
     public String getWord() {
         return question.getWord();
-    }
-
-    public boolean questionIsBeingCreated() {
-        return questionIsBeingCreated;
-    }
-
-    public void set_isBeingCreated(boolean questionIsBeingCreated) {
-        this.questionIsBeingCreated = questionIsBeingCreated;
     }
 
     static int getAnswerOptions() {

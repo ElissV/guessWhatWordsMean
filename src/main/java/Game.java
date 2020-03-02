@@ -3,7 +3,7 @@ class Game {
     private static final int QUESTIONS_QTY = 10;
     private GameForm gameForm;
     private Question currentQuestion;
-    private Question nextQuestion;
+    private NextQuestion nextQuestion;
     private boolean programWaitsForAnswer = true;
     private int questionsAnswered = 0;
     private int rightAnswersGiven = 0;
@@ -43,7 +43,7 @@ class Game {
             } else {
                 currentQuestion = nextQuestion;
                 gameForm.showQuestion();
-                if (!nextQuestion.questionIsBeingCreated()) {
+                if (nextQuestion.questionIsNotBeingCreated()) {
                     getNextQuestion();
                 }
             }
@@ -55,7 +55,7 @@ class Game {
         }
         currentQuestion = nextQuestion;
         gameForm.showQuestion();
-        if (!nextQuestion.questionIsBeingCreated()) {
+        if (nextQuestion.questionIsNotBeingCreated()) {
             getNextQuestion();
         }
     }
@@ -67,11 +67,11 @@ class Game {
     }
 
     private void createNewQuestionAndCheck() {
-        nextQuestion = new Question();
+        nextQuestion = new NextQuestion();
         if (gameForm.getQuestionLabelText().equals("Loading...")) {
             currentQuestion = nextQuestion;
             gameForm.showQuestion();
-            nextQuestion = new Question();
+            nextQuestion = new NextQuestion();
         }
     }
 
