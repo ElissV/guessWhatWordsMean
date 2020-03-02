@@ -15,9 +15,9 @@ class Game {
     }
 
     void askFirstQuestion() {
+        gameForm.setGameAndQuestion(this);
         getNextQuestion();
         currentQuestion = new Question();
-        gameForm.setGameAndQuestion(this);
         gameForm.showQuestion();
     }
 
@@ -30,12 +30,23 @@ class Game {
 
     private void getCurrentAndNextQuestion() {
         String askedQuestion = gameForm.getQuestionLabelText();
-        if (askedQuestion.equals(currentQuestion.getWord())) {
-            if (askedQuestion.equals(nextQuestion.getWord())) {
+        if (askedQuestion.equals("Loading...")) {
+            if (currentQuestion.getWord().equals(nextQuestion.getWord())) {
                 userWaitsForQuestion = true;
                 gameForm.wordIsLoading();
                 return;
+            } else {
+                currentQuestion = nextQuestion;
+                gameForm.showQuestion();
+                if (!nextQuestion.questionIsBeingCreated()) {
+                    getNextQuestion();
+                }
             }
+        }
+        if (currentQuestion.getWord().equals(nextQuestion.getWord())) {
+            userWaitsForQuestion = true;
+            gameForm.wordIsLoading();
+            return;
         }
         currentQuestion = nextQuestion;
         gameForm.showQuestion();
@@ -52,9 +63,11 @@ class Game {
 
     private void createNewQuestionAndCheck() {
         nextQuestion = new Question();
-        if (userWaitsForQuestion) {
+        System.out.println("Next created and user waits: " + userWaitsForQuestion);
+        if (gameForm.getQuestionLabelText().equals("Loading...")) {
             currentQuestion = nextQuestion;
             gameForm.showQuestion();
+            System.out.println(currentQuestion.getWord() + " | " + nextQuestion.getWord());
             nextQuestion = new Question();
         }
     }

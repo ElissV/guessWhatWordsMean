@@ -59,6 +59,7 @@ public class GameForm {
     }
 
     void showQuestion() {
+        System.out.println("SHOWING!!!!!!!!");
         if (game.getQuestionsAnswered() == 0)
             addListeners();
         setQuestionLabelText();
