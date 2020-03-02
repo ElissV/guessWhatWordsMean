@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21f3db11-8835-468e-864a-bb0fb4fc508f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PageReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WebPageReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WordForQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WordForQuestion.java" afterDir="false" />
-    </list>
+    <list default="true" id="21f3db11-8835-468e-864a-bb0fb4fc508f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +118,7 @@
       <workItem from="1582995059618" duration="10223000" />
       <workItem from="1583011023536" duration="2876000" />
       <workItem from="1583066646315" duration="1770000" />
-      <workItem from="1583140738304" duration="34179000" />
+      <workItem from="1583140738304" duration="35181000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,5 @@
 class Game {
 
-    private static final int QUESTIONS_QTY = 10;
     private GameForm gameForm;
     private Question currentQuestion;
     private NextQuestion nextQuestion;
@@ -77,10 +76,6 @@ class Game {
 
     Question getCurrentQuestion() {
         return currentQuestion;
-    }
-
-    int getQUESTIONS_QTY() {
-        return QUESTIONS_QTY;
     }
 
     void gotAnswer(String answer) {
