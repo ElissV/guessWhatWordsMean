@@ -1,3 +1,4 @@
+import org.w3c.dom.ls.LSOutput;
 
 class Game {
 
@@ -31,11 +32,15 @@ class Game {
     private void getCurrentAndNextQuestion() {
         String askedQuestion = gameForm.getQuestionLabelText();
         if (askedQuestion.equals("Loading...")) {
+            //System.out.println(currentQuestion.getWord() + " | " + nextQuestion.getWord());
             if (currentQuestion.getWord().equals(nextQuestion.getWord())) {
+                getNextQuestion();
+                System.out.println("1");
                 userWaitsForQuestion = true;
                 gameForm.wordIsLoading();
                 return;
             } else {
+                System.out.println("2");
                 currentQuestion = nextQuestion;
                 gameForm.showQuestion();
                 if (!nextQuestion.questionIsBeingCreated()) {
@@ -44,10 +49,13 @@ class Game {
             }
         }
         if (currentQuestion.getWord().equals(nextQuestion.getWord())) {
+            getNextQuestion();
+            System.out.println("3");
             userWaitsForQuestion = true;
             gameForm.wordIsLoading();
             return;
         }
+        System.out.println("4");
         currentQuestion = nextQuestion;
         gameForm.showQuestion();
         if (!nextQuestion.questionIsBeingCreated()) {
@@ -63,11 +71,10 @@ class Game {
 
     private void createNewQuestionAndCheck() {
         nextQuestion = new Question();
-        System.out.println("Next created and user waits: " + userWaitsForQuestion);
+        System.out.println(gameForm.getQuestionLabelText() + " <<");
         if (gameForm.getQuestionLabelText().equals("Loading...")) {
             currentQuestion = nextQuestion;
             gameForm.showQuestion();
-            System.out.println(currentQuestion.getWord() + " | " + nextQuestion.getWord());
             nextQuestion = new Question();
         }
     }

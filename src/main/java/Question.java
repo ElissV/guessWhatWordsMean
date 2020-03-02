@@ -12,7 +12,6 @@ class Question {
 
     Question() {
         questionIsBeingCreated = true;
-        System.out.println("Creating question");
         createQuestion();
     }
 
@@ -20,7 +19,6 @@ class Question {
         pageReader = new PageReader();
         question = pageReader.getWordObject();
         optionsForAnswer = createOptions();
-        System.out.println("Created");
         questionIsBeingCreated = false;
     }
 

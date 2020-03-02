@@ -74,12 +74,12 @@ class PageReader {
                 elementsCount++;
             }
         }
-        for (WebElement w : elements) {
+        /*for (WebElement w : elements) {
             String str = firstCharToUpperCase(w.getText());
             System.out.println("Elem " + " {\n" + str + "\n}Elem");
         }
         System.out.println("COUNT " + elementsCount);
-        System.out.println("");
+        System.out.println("");*/
         return elements;
     }
 
