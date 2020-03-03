@@ -131,7 +131,7 @@ public class GameForm {
                 clicked.setBackground(red);
                 showRightAnswer();
             }
-            game.gotAnswer(answer);
+            game.checkAnswerAndUpdateScore(answer);
             setScoreLabelText();
             game.setWaitsForAnswerFalse();
         }

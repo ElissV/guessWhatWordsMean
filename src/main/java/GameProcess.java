@@ -9,21 +9,21 @@ class GameProcess {
     private int questionsAnswered;
     private int rightAnswersGiven;
 
+
     GameProcess(GameForm gameForm) {
         this.gameForm = gameForm;
         setInitialValues();
     }
 
     private void setInitialValues() {
-        programWaitsForAnswer = true;
-        questionsAnswered = 0;
-        rightAnswersGiven = 0;
         currentQuestion = null;
         nextQuestion = null;
+        questionsAnswered = 0;
+        rightAnswersGiven = 0;
+        programWaitsForAnswer = true;
     }
 
     void askFirstQuestion() {
-        setInitialValues();
         gameForm.setGame(this);
         getNextQuestion();
         currentQuestion = new CurrentQuestion();
@@ -31,43 +31,29 @@ class GameProcess {
     }
 
     void askQuestion() {
-        if (questionsAnswered == 10) {
-            showScore();
-            setInitialValues();
-            GameStart.startGame();
-            return;
-        }
+        startOverIfGameFinished();
         if (!programWaitsForAnswer) {
             getCurrentAndNextQuestion();
             programWaitsForAnswer = true;
         }
     }
 
-    private void showScore() {
-        String message = "Your score is " +
-                rightAnswersGiven + "/" + questionsAnswered + "!\n" +
-                "Press OK to try again.";
-        JOptionPane.showMessageDialog(gameForm.getjFrame(), message);
+    private void startOverIfGameFinished() {
+        if (gameIsFinished()) {
+            showScore();
+            setInitialValues();
+            GameStart.startGame();
+        }
+    }
+
+    private boolean gameIsFinished() {
+        return questionsAnswered == 10;
     }
 
     private void getCurrentAndNextQuestion() {
-        String askedQuestion = gameForm.getQuestionLabelText();
-        if (askedQuestion.equals("Loading...")) {
-            if (currentQuestion.getWordForQuestion().equals(nextQuestion.getWordForQuestion())) {
-                getNextQuestion();
-                gameForm.wordIsLoading();
-                return;
-            } else {
-                currentQuestion = nextQuestion;
-                gameForm.showQuestion();
-                if (nextQuestion.questionIsNotBeingCreated()) {
-                    getNextQuestion();
-                }
-            }
-        } else if (currentQuestion.getWordForQuestion().equals(nextQuestion.getWordForQuestion())) {
+        if (nextQuestionIsNotCreated()) {
             getNextQuestion();
             gameForm.wordIsLoading();
-            return;
         } else {
             currentQuestion = nextQuestion;
             gameForm.showQuestion();
@@ -75,6 +61,11 @@ class GameProcess {
                 getNextQuestion();
             }
         }
+    }
+
+    private boolean nextQuestionIsNotCreated() {
+        return currentQuestion.getWordForQuestion()
+                .equals(nextQuestion.getWordForQuestion());
     }
 
     private void getNextQuestion() {
@@ -85,18 +76,33 @@ class GameProcess {
 
     private void createNewQuestionAndCheck() {
         nextQuestion = new NextQuestion();
-        if (gameForm.getQuestionLabelText().equals("Loading...")) {
-            currentQuestion = nextQuestion;
-            gameForm.showQuestion();
-            nextQuestion = new NextQuestion();
+        if (userWaitsForQuestion()) {
+            showCreatedQuestionAndGetNextQuestion();
         }
+    }
+
+    private boolean userWaitsForQuestion() {
+        return gameForm.getQuestionLabelText().equals("Loading...");
+    }
+
+    private void showCreatedQuestionAndGetNextQuestion() {
+        currentQuestion = nextQuestion;
+        gameForm.showQuestion();
+        nextQuestion = new NextQuestion();
+    }
+
+    private void showScore() {
+        String message = "Your score is " +
+                rightAnswersGiven + "/" + questionsAnswered + "!\n" +
+                "Press OK to try again.";
+        JOptionPane.showMessageDialog(gameForm.getjFrame(), message);
     }
 
     Question getCurrentQuestion() {
         return currentQuestion;
     }
 
-    void gotAnswer(String answer) {
+    void checkAnswerAndUpdateScore(String answer) {
         if (currentQuestion.isRightAnswer(answer))
             rightAnswersGiven++;
         questionsAnswered++;
@@ -117,4 +123,5 @@ class GameProcess {
     int getRightAnswersGiven() {
         return rightAnswersGiven;
     }
+
 }
