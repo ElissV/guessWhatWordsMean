@@ -5,7 +5,7 @@ import java.util.List;
 
 public class GameForm {
 
-    private Game game;
+    private GameProcess game;
 
     private JFrame jFrame;
     private JPanel panel1;
@@ -179,7 +179,7 @@ public class GameForm {
         return game.getCurrentQuestion();
     }
 
-    void setGame(Game game) {
+    void setGame(GameProcess game) {
         this.game = game;
     }
 

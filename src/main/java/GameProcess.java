@@ -1,4 +1,4 @@
-class Game {
+class GameProcess {
 
     private GameForm gameForm;
     private Question currentQuestion;
@@ -7,7 +7,7 @@ class Game {
     private int questionsAnswered = 0;
     private int rightAnswersGiven = 0;
 
-    Game (GameForm gameForm) {
+    GameProcess(GameForm gameForm) {
         this.gameForm = gameForm;
     }
 
