@@ -5,7 +5,7 @@ class GameStart {
     private static GameForm gameForm;
     private static GameProcess game;
 
-    static void startFirstGame() {
+    GameStart() {
         gameForm = new GameForm();
         game = new GameProcess(gameForm);
         showInitialMessage();
