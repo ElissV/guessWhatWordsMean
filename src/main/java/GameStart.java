@@ -7,13 +7,13 @@ class GameStart {
 
     static void startFirstGame() {
         gameForm = new GameForm();
+        game = new GameProcess(gameForm);
         showInitialMessage();
         startGame();
     }
 
     static void startGame() {
         gameForm.setupFormForStart();
-        game = new GameProcess(gameForm);
         game.askFirstQuestion();
     }
 

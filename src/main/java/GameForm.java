@@ -78,7 +78,6 @@ public class GameForm {
     }
 
     private void setQuestionLabelText() {
-        System.out.println(game);
         String word = getQuestion().getWordForQuestion();
         questionLabel.setText(word);
     }

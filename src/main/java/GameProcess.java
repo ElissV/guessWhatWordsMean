@@ -5,16 +5,25 @@ class GameProcess {
     private GameForm gameForm;
     private Question currentQuestion;
     private NextQuestion nextQuestion;
-    private boolean programWaitsForAnswer = true;
-    private int questionsAnswered = 0;
-    private int rightAnswersGiven = 0;
+    private boolean programWaitsForAnswer;
+    private int questionsAnswered;
+    private int rightAnswersGiven;
 
     GameProcess(GameForm gameForm) {
         this.gameForm = gameForm;
+        setInitialValues();
+    }
+
+    private void setInitialValues() {
+        programWaitsForAnswer = true;
+        questionsAnswered = 0;
+        rightAnswersGiven = 0;
+        currentQuestion = null;
+        nextQuestion = null;
     }
 
     void askFirstQuestion() {
-        System.out.println(this);
+        setInitialValues();
         gameForm.setGame(this);
         getNextQuestion();
         currentQuestion = new CurrentQuestion();
@@ -24,6 +33,7 @@ class GameProcess {
     void askQuestion() {
         if (questionsAnswered == 10) {
             showScore();
+            setInitialValues();
             GameStart.startGame();
             return;
         }
@@ -54,16 +64,16 @@ class GameProcess {
                     getNextQuestion();
                 }
             }
-        }
-        if (currentQuestion.getWordForQuestion().equals(nextQuestion.getWordForQuestion())) {
+        } else if (currentQuestion.getWordForQuestion().equals(nextQuestion.getWordForQuestion())) {
             getNextQuestion();
             gameForm.wordIsLoading();
             return;
-        }
-        currentQuestion = nextQuestion;
-        gameForm.showQuestion();
-        if (nextQuestion.questionIsNotBeingCreated()) {
-            getNextQuestion();
+        } else {
+            currentQuestion = nextQuestion;
+            gameForm.showQuestion();
+            if (nextQuestion.questionIsNotBeingCreated()) {
+                getNextQuestion();
+            }
         }
     }
 
