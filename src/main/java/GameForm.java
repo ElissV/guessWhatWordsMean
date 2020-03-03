@@ -161,7 +161,12 @@ public class GameForm {
             Color green = Color.decode("#64DF58");
             button.setBackground(green);
         } else
-            Main.showMessage("Error.\nRight answer not found.");
+            showErrorMessage();
+    }
+
+    private void showErrorMessage() {
+        JOptionPane.showMessageDialog(jFrame,
+                "Error.\nRight answer not found.");
     }
 
     private JButton getButtonWithRightAnswer() {

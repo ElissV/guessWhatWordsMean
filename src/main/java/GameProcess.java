@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 class GameProcess {
 
     private GameForm gameForm;
@@ -21,15 +23,21 @@ class GameProcess {
 
     void askQuestion() {
         if (questionsAnswered == 10) {
-            Main.showMessage("Your score is " + rightAnswersGiven + "/" + questionsAnswered + "!\n" +
-                                "Press OK to try again.");
-            Main.startGame();
+            showScore();
+            GameStart.startGame();
             return;
         }
         if (!programWaitsForAnswer) {
             getCurrentAndNextQuestion();
             programWaitsForAnswer = true;
         }
+    }
+
+    private void showScore() {
+        String message = "Your score is " +
+                rightAnswersGiven + "/" + questionsAnswered + "!\n" +
+                "Press OK to try again.";
+        JOptionPane.showMessageDialog(gameForm.getjFrame(), message);
     }
 
     private void getCurrentAndNextQuestion() {
