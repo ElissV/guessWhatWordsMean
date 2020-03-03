@@ -5,25 +5,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class WebPageReader {
 
-    static String[] getValuesArray() {
+    static List<String> getValuesArray() {
         WebDriver driver = getDriver();
-        List<WebElement> elements = getPageContent(driver);
-        int elementsTotal = 10;
-        String[] elementStr = new String[elementsTotal];
-        int i = 0;
-        for (WebElement w : elements) {
-            String str = firstCharToUpperCase(w.getText());
-            elementStr[i] = str;
-            i++;
-        }
+        String result = getPageContent(driver).get(0).getText();
+        result = firstCharToUpperCase(result);
+        List<String> elementsStr =
+                Arrays.asList(result.split("\n"));
         driver.quit();
-        return elementStr[0].split("\n");
+        return elementsStr;
     }
-    
+
     private static List<WebElement> getPageContent(WebDriver driver) {
         List<WebElement> elements = null;
         String element = "";

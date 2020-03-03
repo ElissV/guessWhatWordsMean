@@ -15,7 +15,7 @@ abstract class Question {
     }
 
     private List<String> createOptionsForAnswer() {
-        List<String> options = reader.getWrongOptionsForAnswer();
+        List<String> options = reader.getWrongAnswerOptions();
         options.add(wordForQuestion.getRightDefinition());
         Collections.shuffle(options);
         return options;
