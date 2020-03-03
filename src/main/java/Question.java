@@ -3,13 +3,13 @@ import java.util.List;
 
 abstract class Question {
 
-    private WebPageReader reader;
+    private WebPageContentHandler reader;
     private WordForQuestion wordForQuestion;
     private List<String> optionsForAnswer;
 
 
     protected void createQuestion() {
-        reader = new WebPageReader();
+        reader = new WebPageContentHandler();
         wordForQuestion = reader.getWordObject();
         optionsForAnswer = createOptionsForAnswer();
     }

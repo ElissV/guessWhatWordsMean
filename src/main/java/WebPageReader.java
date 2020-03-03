@@ -5,28 +5,52 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 class WebPageReader {
 
-    private String[] wordsAndDefinitions;
-
-
-    WordForQuestion getWordObject() {
-        wordsAndDefinitions = getWordsAndDefsArray();
-        String word = wordsAndDefinitions[0];
-        String definition = wordsAndDefinitions[1];
-        return new WordForQuestion(word, definition);
-    }
-
-    private String[] getWordsAndDefsArray() {
+    static String[] getValuesArray() {
         WebDriver driver = getDriver();
-        return getValuesArray(driver);
+        List<WebElement> elements = getPageContent(driver);
+        int elementsTotal = 10;
+        String[] elementStr = new String[elementsTotal];
+        int i = 0;
+        for (WebElement w : elements) {
+            String str = firstCharToUpperCase(w.getText());
+            elementStr[i] = str;
+            i++;
+        }
+        driver.quit();
+        return elementStr[0].split("\n");
+    }
+    
+    private static List<WebElement> getPageContent(WebDriver driver) {
+        List<WebElement> elements = null;
+        String element = "";
+        while (elementIsNotCorrect(element) || element.isEmpty()) {
+            elements = getElements(driver);
+            if (!elements.isEmpty())
+                element = elements.get(0).getText();
+        }
+        return elements;
     }
 
-    private WebDriver getDriver() {
+    private static String firstCharToUpperCase(String word) {
+        int lastCharIndex = word.length();
+        String upperCaseChar = word.substring(0,1).toUpperCase();
+        return upperCaseChar + word.substring(1, lastCharIndex);
+    }
+
+    private static boolean elementIsNotCorrect(String element) {
+        String invalidValue = "LOADING…";
+        return element.equals(invalidValue);
+    }
+
+    private static List<WebElement> getElements(WebDriver driver) {
+        return driver.findElements(By.className("Rand-stage"));
+    }
+
+    private static WebDriver getDriver() {
         System.setProperty("webdriver.chrome.driver",
                 "D:\\Software\\Chrome_download\\chromedriver\\chromedriver.exe");
         String url = "https://www.randomlists.com/random-vocabulary-words";
@@ -36,74 +60,11 @@ class WebPageReader {
         return driver;
     }
 
-    private ChromeOptions getChromeOptions() {
+    private static ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         options.setPageLoadStrategy(PageLoadStrategy.EAGER);
         return options;
-    }
-
-    private String[] getValuesArray(WebDriver driver) {
-        List<WebElement> elements = getPageContent(driver);
-         int elementsTotal = 10;
-        String[] elementStr = new String[elementsTotal];
-        int i = 0;
-        for (WebElement w : elements) {
-            String str = firstCharToUpperCase(w.getText());
-            elementStr[i] = str;
-            i++;
-        }
-        /*elementStr = elementStr[0].split("\n");
-        if (elementStr.length <= 1) {
-            System.out.println("SMALL LEN");
-            driver.navigate().refresh();
-            return getValuesArray(driver);
-        }*/
-        driver.quit();
-        return elementStr[0].split("\n");
-    }
-
-    private List<WebElement> getPageContent(WebDriver driver) {
-        List<WebElement> elements = null;
-        String invalidResult = "LOADING…";
-        String firstElement = invalidResult;
-        while (firstElement.equals(invalidResult)) {
-            elements = driver.findElements(By.className("Rand-stage"));
-            firstElement = elements.get(0).getText();
-        }
-        return elements;
-    }
-
-    private String firstCharToUpperCase(String word) {
-        int lastCharIndex = word.length();
-        String upperCaseChar = word.substring(0,1).toUpperCase();
-        return upperCaseChar + word.substring(1, lastCharIndex);
-    }
-
-    List<String> getWrongOptionsForAnswer() {
-        List<String> array = removeWordAndDefinitionForQuestion();
-        return leaveOnlyThreeDefinitions(array);
-    }
-
-    private List<String> removeWordAndDefinitionForQuestion() {
-        List<String> list = new ArrayList<>(Arrays.asList(wordsAndDefinitions));
-        int wordForQuestionIndex = 0, definitionIndex = 1;
-        list.remove(definitionIndex);
-        list.remove(wordForQuestionIndex);
-        return list;
-    }
-
-    private static List<String> leaveOnlyThreeDefinitions(List<String> list) {
-        List<String> definitions = new ArrayList<>();
-        int index = 0;
-        for (String s : list) {
-            if (index%2 != 0)
-                definitions.add(s);
-            index++;
-        }
-        int forthDefinitionIndex = definitions.size()-1;
-        definitions.remove(forthDefinitionIndex);
-        return definitions;
     }
 
 }
