@@ -5,11 +5,11 @@ import java.util.List;
 public class GameForm {
 
     private GameProcess game;
-    private JButton[] jButtons;
 
     private JFrame jFrame;
     private JPanel panel1;
     private JSplitPane splitPane;
+    private JButton[] jButtons;
     private JButton button1;
     private JButton button2;
     private JButton button3;
@@ -59,16 +59,19 @@ public class GameForm {
 
     void setupFormForStart() {
         jButtons = getButtonArray();
-        questionLabel.setText("Loading...");
-        questionLabel.paintImmediately(questionLabel.getVisibleRect());
-        scoreLabel.setText("0/0");
-        scoreLabel.paintImmediately(scoreLabel.getVisibleRect());
+        setLabelText(questionLabel, "Loading...");
+        setLabelText(scoreLabel, "0/0");
         Color defaultColor = new Color(230,232,226);
         for (JButton button : jButtons) {
             button.setText("option");
             button.setBackground(defaultColor);
             button.paintImmediately(button.getVisibleRect());
         }
+    }
+
+    private void setLabelText(JLabel label, String text) {
+        label.setText(text);
+        label.paintImmediately(label.getVisibleRect());
     }
 
     void showFirstQuestion() {

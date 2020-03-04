@@ -16,41 +16,54 @@ public class ButtonClickListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (game.programWaitsForAnswer()) {
-            String answer = e.getActionCommand();
-            JButton clicked = (JButton) e.getSource();
-            Question q = game.getCurrentQuestion();
-            if (q.isRightAnswer(answer)) {
-                Color green = Color.decode("#64DF58");
-                clicked.setBackground(green);
-            } else {
-                Color red = Color.decode("#DC3232");
-                clicked.setBackground(red);
-                showRightAnswer();
-            }
-            game.checkAnswerAndUpdateScore(answer);
-            setScoreLabelText();
-            game.setWaitsForAnswerFalse();
+            checkAnswerAndShowResult(e);
         }
+    }
+
+    private void checkAnswerAndShowResult(ActionEvent e) {
+        boolean answerIsRight = answerIsRight(e);
+        showResult(answerIsRight, e);
+    }
+
+    private boolean answerIsRight(ActionEvent e) {
+        String answer = e.getActionCommand();
+        Question question = game.getCurrentQuestion();
+        return question.isRightAnswer(answer);
+    }
+
+    private void showResult(boolean answerIsRight, ActionEvent e) {
+        JButton clicked = (JButton) e.getSource();
+        if (answerIsRight) {
+            showRightAnswer(clicked);
+        } else {
+            showThatAnswerIsWrongAndShowRightAnswer(clicked);
+        }
+        game.updateScore(answerIsRight);
+        setScoreLabelText();
+        game.setWaitsForAnswerFalse();
+    }
+
+    private void showRightAnswer(JButton buttonWithRightAnswer) {
+        Color green = Color.decode("#64DF58");
+        buttonWithRightAnswer.setBackground(green);
+    }
+
+    private void showThatAnswerIsWrongAndShowRightAnswer(JButton clicked) {
+        showThatAnswerIsWrong(clicked);
+        JButton rightButton = getButtonWithRightAnswer();
+        if (rightButton != null)
+            showRightAnswer(rightButton);
+    }
+
+    private void showThatAnswerIsWrong(JButton wrongButton) {
+        Color red = Color.decode("#DC3232");
+        wrongButton.setBackground(red);
     }
 
     private void setScoreLabelText() {
         int rightAnswers = game.getCountOfRightAnswersGiven();
         int questionsShown = game.getQuestionsAnsweredCount();
         form.setScoreLabel(rightAnswers + "/" + questionsShown);
-    }
-
-    private void showRightAnswer() {
-        JButton button = getButtonWithRightAnswer();
-        if (button != null) {
-            Color green = Color.decode("#64DF58");
-            button.setBackground(green);
-        } else
-            showErrorMessage();
-    }
-
-    private void showErrorMessage() {
-        JOptionPane.showMessageDialog(form.getjFrame(),
-                "Error.\nRight answer not found.");
     }
 
     private JButton getButtonWithRightAnswer() {

@@ -103,8 +103,8 @@ class GameProcess {
         return currentQuestion;
     }
 
-    void checkAnswerAndUpdateScore(String answer) {
-        if (currentQuestion.isRightAnswer(answer))
+    void updateScore(boolean rightAnswerWasGiven) {
+        if (rightAnswerWasGiven)
             rightAnswersGiven++;
         questionsAnswered++;
     }
