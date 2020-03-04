@@ -1,10 +1,12 @@
-class WordForQuestion {
+package com.game.question;
+
+public class WordForQuestion {
 
     private String word;
     private String definition;
 
 
-    WordForQuestion(String word, String definition) {
+    public WordForQuestion(String word, String definition) {
         this.word = word;
         this.definition = definition;
     }

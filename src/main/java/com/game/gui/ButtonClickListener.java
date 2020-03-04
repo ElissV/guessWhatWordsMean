@@ -1,3 +1,8 @@
+package com.game.gui;
+
+import com.game.GameProcess;
+import com.game.question.Question;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

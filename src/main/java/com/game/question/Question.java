@@ -1,7 +1,11 @@
+package com.game.question;
+
+import com.game.webpage.WebPageContentHandler;
+
 import java.util.Collections;
 import java.util.List;
 
-abstract class Question {
+public abstract class Question {
 
     private WebPageContentHandler reader;
     private WordForQuestion wordForQuestion;
@@ -21,16 +25,16 @@ abstract class Question {
         return options;
     }
 
-    boolean isRightAnswer(String answer) {
+    public boolean isRightAnswer(String answer) {
         String rightAnswer = wordForQuestion.getRightDefinition();
         return answer.equals(rightAnswer);
     }
 
-    List<String> getOptionsForAnswer() {
+    public List<String> getOptionsForAnswer() {
         return optionsForAnswer;
     }
 
-    String getWordForQuestion() {
+    public String getWordForQuestion() {
         return wordForQuestion.getWord();
     }
 

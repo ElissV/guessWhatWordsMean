@@ -1,3 +1,7 @@
+package com.game.gui;
+
+import com.game.GameProcess;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

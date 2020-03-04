@@ -1,6 +1,13 @@
+package com.game;
+
+import com.game.gui.GameForm;
+import com.game.question.CurrentQuestion;
+import com.game.question.NextQuestion;
+import com.game.question.Question;
+
 import javax.swing.*;
 
-class GameProcess {
+public class GameProcess {
 
     private GameForm gameForm;
     private Question currentQuestion;
@@ -30,7 +37,7 @@ class GameProcess {
         gameForm.showFirstQuestion();
     }
 
-    void askQuestion() {
+    public void askQuestion() {
         startOverIfGameFinished();
         if (!programWaitsForAnswer) {
             getCurrentAndNextQuestion();
@@ -99,29 +106,29 @@ class GameProcess {
         JOptionPane.showMessageDialog(gameForm.getjFrame(), message);
     }
 
-    Question getCurrentQuestion() {
+    public Question getCurrentQuestion() {
         return currentQuestion;
     }
 
-    void updateScore(boolean rightAnswerWasGiven) {
+    public void updateScore(boolean rightAnswerWasGiven) {
         if (rightAnswerWasGiven)
             rightAnswersGiven++;
         questionsAnswered++;
     }
 
-    boolean programWaitsForAnswer() {
+    public boolean programWaitsForAnswer() {
         return programWaitsForAnswer;
     }
 
-    void setWaitsForAnswerFalse() {
+    public void setWaitsForAnswerFalse() {
         programWaitsForAnswer = false;
     }
 
-    int getQuestionsAnsweredCount() {
+    public int getQuestionsAnsweredCount() {
         return questionsAnswered;
     }
 
-    int getCountOfRightAnswersGiven() {
+    public int getCountOfRightAnswersGiven() {
         return rightAnswersGiven;
     }
 

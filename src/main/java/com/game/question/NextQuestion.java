@@ -1,8 +1,10 @@
-class NextQuestion extends Question {
+package com.game.question;
+
+public class NextQuestion extends Question {
 
     private boolean questionIsBeingCreated;
 
-    NextQuestion() {
+    public NextQuestion() {
         questionIsBeingCreated = true;
         createQuestion();
     }
@@ -13,7 +15,7 @@ class NextQuestion extends Question {
         questionIsBeingCreated = false;
     }
 
-    boolean questionIsNotBeingCreated() {
+    public boolean questionIsNotBeingCreated() {
         return !questionIsBeingCreated;
     }
 

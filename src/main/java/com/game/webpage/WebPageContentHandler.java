@@ -1,27 +1,23 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.PageLoadStrategy;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+package com.game.webpage;
+
+import com.game.question.WordForQuestion;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-class WebPageContentHandler {
+public class WebPageContentHandler {
 
     private List<String> wordsAndDefinitions;
 
 
-    WordForQuestion getWordObject() {
+    public WordForQuestion getWordObject() {
         wordsAndDefinitions = WebPageReader.getValuesArray();
         String word = wordsAndDefinitions.get(0);
         String definition = wordsAndDefinitions.get(1);
         return new WordForQuestion(word, definition);
     }
 
-    List<String> getWrongAnswerOptions() {
+    public List<String> getWrongAnswerOptions() {
         List<String> array = removeWordAndDefinitionForQuestion();
         return leaveOnlyThreeDefinitions(array);
     }

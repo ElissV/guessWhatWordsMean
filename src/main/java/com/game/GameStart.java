@@ -1,11 +1,15 @@
+package com.game;
+
+import com.game.gui.GameForm;
+
 import javax.swing.*;
 
-class GameStart {
+public class GameStart {
 
     private static GameForm gameForm;
     private static GameProcess game;
 
-    GameStart() {
+    public GameStart() {
         gameForm = new GameForm();
         game = new GameProcess(gameForm);
         showInitialMessage();

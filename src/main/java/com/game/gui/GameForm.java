@@ -1,3 +1,8 @@
+package com.game.gui;
+
+import com.game.GameProcess;
+import com.game.question.Question;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -19,7 +24,7 @@ public class GameForm {
     private JSplitPane answers1;
     private JSplitPane answers2;
 
-    GameForm() {
+    public GameForm() {
         int frameWidth = 700, frameHeight = 450;
         jFrame = new JFrame();
         jFrame.setSize(frameWidth, frameHeight);
@@ -57,7 +62,7 @@ public class GameForm {
         answers2.setPreferredSize(new Dimension(jFrame.getWidth(), 180));
     }
 
-    void setupFormForStart() {
+    public void setupFormForStart() {
         jButtons = getButtonArray();
         setLabelText(questionLabel, "Loading...");
         setLabelText(scoreLabel, "0/0");
@@ -74,12 +79,12 @@ public class GameForm {
         label.paintImmediately(label.getVisibleRect());
     }
 
-    void showFirstQuestion() {
+    public void showFirstQuestion() {
         addListeners();
         showQuestion();
     }
 
-    void showQuestion() {
+    public void showQuestion() {
         setQuestionLabelText();
         setButtonsText();
     }
@@ -100,8 +105,8 @@ public class GameForm {
     }
 
     private void setButtonsText() {
-        Question q = getQuestion();
-        List<String> options = q.getOptionsForAnswer();
+        Question question = getQuestion();
+        List<String> options = question.getOptionsForAnswer();
         int i = 0;
         Color defaultColor = new Color(230,232,226);
         for (JButton button : jButtons) {
@@ -124,11 +129,11 @@ public class GameForm {
         return game.getCurrentQuestion();
     }
 
-    void setGame(GameProcess game) {
+    public void setGame(GameProcess game) {
         this.game = game;
     }
 
-    JFrame getjFrame() {
+    public JFrame getjFrame() {
         return jFrame;
     }
 
@@ -136,11 +141,11 @@ public class GameForm {
         scoreLabel.setText(value);
     }
 
-    String getQuestionLabelText() {
+    public String getQuestionLabelText() {
         return questionLabel.getText();
     }
 
-    void wordIsLoading() {
+    public void wordIsLoading() {
         questionLabel.setText("Loading...");
     }
 
