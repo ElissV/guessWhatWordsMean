@@ -1,14 +1,11 @@
-import net.bytebuddy.asm.Advice;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.List;
 
 public class GameForm {
 
     private GameProcess game;
-    private EnterKeyListener enterListener;
+    private JButton[] jButtons;
 
     private JFrame jFrame;
     private JPanel panel1;
@@ -61,7 +58,7 @@ public class GameForm {
     }
 
     void setupFormForStart() {
-        JButton[] jButtons = getJButtonArray();
+        jButtons = getButtonArray();
         questionLabel.setText("Loading...");
         questionLabel.paintImmediately(questionLabel.getVisibleRect());
         scoreLabel.setText("0/0");
@@ -89,16 +86,12 @@ public class GameForm {
         questionLabel.setText(word);
     }
 
-    private void setScoreLabelText() {
-        int rightAnswers = game.getRightAnswersGiven();
-        int questionsShown = game.getQuestionsAnswered();
-        scoreLabel.setText(rightAnswers + "/" + questionsShown);
-    }
-
     private void addListeners() {
-        JButton[] jButtons = getJButtonArray();
+        ButtonClickListener buttonListener =
+                new ButtonClickListener(game, this);
+        EnterKeyListener enterListener = new EnterKeyListener(game);
         for (JButton button : jButtons) {
-            button.addActionListener(listener);
+            button.addActionListener(buttonListener);
             button.addKeyListener(enterListener);
         }
     }
@@ -106,7 +99,6 @@ public class GameForm {
     private void setButtonsText() {
         Question q = getQuestion();
         List<String> options = q.getOptionsForAnswer();
-        JButton[] jButtons = getJButtonArray();
         int i = 0;
         Color defaultColor = new Color(230,232,226);
         for (JButton button : jButtons) {
@@ -116,7 +108,7 @@ public class GameForm {
         }
     }
 
-    private JButton[] getJButtonArray() {
+    JButton[] getButtonArray() {
         JButton[] jButtons = new JButton[4];
         jButtons[0] = button1;
         jButtons[1] = button2;
@@ -125,61 +117,20 @@ public class GameForm {
         return jButtons;
     }
 
-    private ActionListener listener = e -> {
-        if (game.programWaitsForAnswer()) {
-            String answer = e.getActionCommand();
-            JButton clicked = (JButton) e.getSource();
-            Question q = getQuestion();
-            if (q.isRightAnswer(answer)) {
-                Color green = Color.decode("#64DF58");
-                clicked.setBackground(green);
-            } else {
-                Color red = Color.decode("#DC3232");
-                clicked.setBackground(red);
-                showRightAnswer();
-            }
-            game.checkAnswerAndUpdateScore(answer);
-            setScoreLabelText();
-            game.setWaitsForAnswerFalse();
-        }
-    };
-
-    private void showRightAnswer() {
-        JButton button = getButtonWithRightAnswer();
-        if (button != null) {
-            Color green = Color.decode("#64DF58");
-            button.setBackground(green);
-        } else
-            showErrorMessage();
-    }
-
-    private void showErrorMessage() {
-        JOptionPane.showMessageDialog(jFrame,
-                "Error.\nRight answer not found.");
-    }
-
-    private JButton getButtonWithRightAnswer() {
-        JButton[] jButtons = getJButtonArray();
-        Question q = getQuestion();
-        for (JButton j : jButtons) {
-            String buttonText = j.getText();
-            if (q.isRightAnswer(buttonText))
-                return j;
-        }
-        return null;
-    }
-
     private Question getQuestion() {
         return game.getCurrentQuestion();
     }
 
     void setGame(GameProcess game) {
         this.game = game;
-        enterListener = new EnterKeyListener(game);
     }
 
     JFrame getjFrame() {
         return jFrame;
+    }
+
+    void setScoreLabel(String value) {
+        scoreLabel.setText(value);
     }
 
     String getQuestionLabelText() {

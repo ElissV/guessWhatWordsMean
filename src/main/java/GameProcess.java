@@ -109,19 +109,19 @@ class GameProcess {
         questionsAnswered++;
     }
 
-    void setWaitsForAnswerFalse() {
-        programWaitsForAnswer = false;
-    }
-
-    int getQuestionsAnswered() {
-        return questionsAnswered;
-    }
-
     boolean programWaitsForAnswer() {
         return programWaitsForAnswer;
     }
 
-    int getRightAnswersGiven() {
+    void setWaitsForAnswerFalse() {
+        programWaitsForAnswer = false;
+    }
+
+    int getQuestionsAnsweredCount() {
+        return questionsAnswered;
+    }
+
+    int getCountOfRightAnswersGiven() {
         return rightAnswersGiven;
     }
 
