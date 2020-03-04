@@ -1,3 +1,5 @@
+import net.bytebuddy.asm.Advice;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -6,6 +8,7 @@ import java.util.List;
 public class GameForm {
 
     private GameProcess game;
+    private EnterKeyListener enterListener;
 
     private JFrame jFrame;
     private JPanel panel1;
@@ -29,7 +32,6 @@ public class GameForm {
         placeElements();
         jFrame.setResizable(false);
         jFrame.setVisible(true);
-        addListeners();
     }
 
     private void jFrameCentralize() {
@@ -72,6 +74,11 @@ public class GameForm {
         }
     }
 
+    void showFirstQuestion() {
+        addListeners();
+        showQuestion();
+    }
+
     void showQuestion() {
         setQuestionLabelText();
         setButtonsText();
@@ -92,7 +99,7 @@ public class GameForm {
         JButton[] jButtons = getJButtonArray();
         for (JButton button : jButtons) {
             button.addActionListener(listener);
-            button.addKeyListener(keyListener);
+            button.addKeyListener(enterListener);
         }
     }
 
@@ -137,23 +144,6 @@ public class GameForm {
         }
     };
 
-    private KeyListener keyListener = new KeyListener() {
-        @Override
-        public void keyTyped(KeyEvent e) {
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode()==KeyEvent.VK_ENTER){
-                game.askQuestion();
-            }
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-        }
-    };
-
     private void showRightAnswer() {
         JButton button = getButtonWithRightAnswer();
         if (button != null) {
@@ -185,6 +175,7 @@ public class GameForm {
 
     void setGame(GameProcess game) {
         this.game = game;
+        enterListener = new EnterKeyListener(game);
     }
 
     JFrame getjFrame() {

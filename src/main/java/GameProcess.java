@@ -27,7 +27,7 @@ class GameProcess {
         gameForm.setGame(this);
         getNextQuestion();
         currentQuestion = new CurrentQuestion();
-        gameForm.showQuestion();
+        gameForm.showFirstQuestion();
     }
 
     void askQuestion() {
@@ -47,7 +47,8 @@ class GameProcess {
     }
 
     private boolean gameIsFinished() {
-        return questionsAnswered == 10;
+        int questionTotalCount = 10;
+        return questionsAnswered == questionTotalCount;
     }
 
     private void getCurrentAndNextQuestion() {
@@ -77,7 +78,7 @@ class GameProcess {
     private void createNewQuestionAndCheck() {
         nextQuestion = new NextQuestion();
         if (userWaitsForQuestion()) {
-            showCreatedQuestionAndGetNextQuestion();
+            showCreatedQuestionAndGetAnotherNextQuestion();
         }
     }
 
@@ -85,7 +86,7 @@ class GameProcess {
         return gameForm.getQuestionLabelText().equals("Loading...");
     }
 
-    private void showCreatedQuestionAndGetNextQuestion() {
+    private void showCreatedQuestionAndGetAnotherNextQuestion() {
         currentQuestion = nextQuestion;
         gameForm.showQuestion();
         nextQuestion = new NextQuestion();
