@@ -1,4 +1,4 @@
-package com.game.gui;
+package com.game.gui.listeners;
 
 import com.game.GameProcess;
 
@@ -9,7 +9,7 @@ public class EnterKeyListener implements KeyListener {
 
     private GameProcess game;
 
-    EnterKeyListener(GameProcess game) {
+    public EnterKeyListener(GameProcess game) {
         this.game = game;
     }
 

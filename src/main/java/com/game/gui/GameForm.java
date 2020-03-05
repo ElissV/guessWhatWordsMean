@@ -1,6 +1,8 @@
 package com.game.gui;
 
 import com.game.GameProcess;
+import com.game.gui.listeners.ButtonClickListener;
+import com.game.gui.listeners.EnterKeyListener;
 import com.game.question.Question;
 
 import javax.swing.*;
@@ -116,7 +118,7 @@ public class GameForm {
         }
     }
 
-    JButton[] getButtonArray() {
+    public JButton[] getButtonArray() {
         JButton[] jButtons = new JButton[4];
         jButtons[0] = button1;
         jButtons[1] = button2;
@@ -137,7 +139,7 @@ public class GameForm {
         return jFrame;
     }
 
-    void setScoreLabel(String value) {
+    public void setScoreLabel(String value) {
         scoreLabel.setText(value);
     }
 

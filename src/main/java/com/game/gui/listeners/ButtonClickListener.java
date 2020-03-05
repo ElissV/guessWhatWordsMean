@@ -1,6 +1,7 @@
-package com.game.gui;
+package com.game.gui.listeners;
 
 import com.game.GameProcess;
+import com.game.gui.GameForm;
 import com.game.question.Question;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ public class ButtonClickListener implements ActionListener {
     private GameForm form;
     private GameProcess game;
 
-    ButtonClickListener(GameProcess game, GameForm form) {
+    public ButtonClickListener(GameProcess game, GameForm form) {
         this.game = game;
         this.form = form;
     }
