@@ -126,7 +126,7 @@ public class GameForm {
     }
 
     private Question getQuestion() {
-        return game.getCurrentQuestion();
+        return game.getCreator().getCurrentQuestion();
     }
 
     public void setGame(GameProcess game) {

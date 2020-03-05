@@ -32,7 +32,7 @@ public class ButtonClickListener implements ActionListener {
 
     private boolean answerIsRight(ActionEvent e) {
         String answer = e.getActionCommand();
-        Question question = game.getCurrentQuestion();
+        Question question = game.getCreator().getCurrentQuestion();
         return question.isRightAnswer(answer);
     }
 
@@ -73,7 +73,7 @@ public class ButtonClickListener implements ActionListener {
 
     private JButton getButtonWithRightAnswer() {
         JButton[] jButtons = form.getButtonArray();
-        Question q = game.getCurrentQuestion();
+        Question q = game.getCreator().getCurrentQuestion();
         for (JButton j : jButtons) {
             String buttonText = j.getText();
             if (q.isRightAnswer(buttonText))
