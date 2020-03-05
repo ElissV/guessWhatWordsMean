@@ -4,7 +4,7 @@ public class NextQuestion extends Question {
 
     private boolean questionIsBeingCreated;
 
-    public NextQuestion() {
+    NextQuestion() {
         questionIsBeingCreated = true;
         createQuestion();
     }
@@ -15,7 +15,7 @@ public class NextQuestion extends Question {
         questionIsBeingCreated = false;
     }
 
-    public boolean questionIsNotBeingCreated() {
+    boolean questionIsNotBeingCreated() {
         return !questionIsBeingCreated;
     }
 

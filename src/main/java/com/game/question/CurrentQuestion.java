@@ -1,8 +1,8 @@
 package com.game.question;
 
-public class CurrentQuestion extends Question {
+class CurrentQuestion extends Question {
 
-    public CurrentQuestion() {
+    CurrentQuestion() {
         createQuestion();
     }
 
